@@ -20,6 +20,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.52 (Ubuntu)" level="application_server_libraries" />
-    <orderEntry type="library" name="com.sun.jersey.glassfish.v3.osgi:jersey-gf-bundle:1.0.3" level="project" />
+    <orderEntry type="library" exported="" name="com.sun.jersey.glassfish.v3.osgi:jersey-gf-bundle:1.0.3" level="project" />
   </component>
 </module>
