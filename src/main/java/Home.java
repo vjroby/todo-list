@@ -9,7 +9,8 @@ import javax.ws.rs.core.MediaType;
 public class Home {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getHome(){
+    public String getHome()
+    {
         return "home";
     }
 }
