@@ -2,9 +2,7 @@ package main.java.servlets;
 
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
-import com.mongodb.util.JSON;
-import main.java.dao.MongoDBListDAO;
-import org.bson.BSON;
+import main.java.dao.MongoDBListDao;
 
 
 import javax.ws.rs.GET;
@@ -28,7 +26,7 @@ public class GetLists {
      try {
 
          MongoClient mongoClient = new MongoClient("localhost",27017);
-         MongoDBListDAO mongoDBListDAO  = new MongoDBListDAO(mongoClient);
+         MongoDBListDao mongoDBListDAO  = new MongoDBListDao(mongoClient);
 
          allList = mongoDBListDAO.readAllList();
 
