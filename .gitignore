@@ -17,3 +17,15 @@ jboss/server/minimal/work/**/*
 # deployed package files #
 .idea/
 *.DEPLOYED
+
+# Created by https://www.gitignore.io
+
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+*.iml
+*/target/*
+.classpath
+.project
+.settings/
+out/
