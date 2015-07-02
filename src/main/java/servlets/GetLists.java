@@ -26,7 +26,7 @@ public class GetLists {
      try {
 
          MongoClient mongoClient = new MongoClient("localhost",27017);
-         MongoDBListDao mongoDBListDAO  = new MongoDBListDao(mongoClient);
+         MongoDBListDao mongoDBListDAO  = new MongoDBListDao();
 
          allList = mongoDBListDAO.readAllList();
 
