@@ -77,7 +77,11 @@ public class MongoDBListDao {
 
     }
 
-//    public ListModel readList(ListModel) {
-//
-//    }
+    public ListModel readList(ListModel listModel) {
+        DBObject query = BasicDBObjectBuilder.start()
+                .append("_id", new ObjectId(listModel.getId())).get();
+        DBObject data = this.collection.findOne(query);
+
+        return ListConverter.toList(data);
+    }
 }
