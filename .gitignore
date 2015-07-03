@@ -29,3 +29,4 @@ jboss/server/minimal/work/**/*
 .project
 .settings/
 out/
+target/
