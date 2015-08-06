@@ -1,3 +1,4 @@
-The OpenShift `jbossas` cartridge documentation can be found at:
+This is a todo list web application.
+It uses Java EE with Jersey Framework.
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#jbossas
+The Application can be accessed ont the here: 
