@@ -1,8 +1,5 @@
 package main.java.model;
 
-/**
- * Created by robertdinu on 7/1/15.
- */
 public class ListModel {
 
     // id will be used for primary key in MongoDB

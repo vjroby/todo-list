@@ -12,7 +12,7 @@ public class ListConverter {
     public static DBObject toDBObject(ListModel listModel) {
 
         BasicDBObjectBuilder builder = BasicDBObjectBuilder.start()
-                .append("title", listModel.getTitle()).append("desccription", listModel.getDescription());
+                .append("title", listModel.getTitle()).append("description", listModel.getDescription());
 
         if (listModel.getId() != null)
             builder = builder.append("_id", new ObjectId(listModel.getId()));
