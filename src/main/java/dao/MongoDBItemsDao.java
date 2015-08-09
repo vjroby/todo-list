@@ -21,9 +21,9 @@ public class MongoDBItemsDao extends MongoDB{
         List<ItemModel> data = new ArrayList<ItemModel>();
 
         BasicDBObject query = new BasicDBObject();
-        BasicDBObject fields = new BasicDBObject("list_id", listModel.getId());
+        query.put("list_id", listModel.getId());
 
-        DBCursor dbCursor = collection.find(query, fields);
+        DBCursor dbCursor = collection.find(query);
 
         while (dbCursor.hasNext()){
             DBObject dbObject = dbCursor.next();

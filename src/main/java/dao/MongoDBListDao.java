@@ -1,6 +1,7 @@
 package main.java.dao;
 
 import com.mongodb.*;
+import com.sun.jersey.api.NotFoundException;
 import main.java.converter.ListConverter;
 import main.java.model.ListModel;
 import org.bson.types.ObjectId;
@@ -52,11 +53,20 @@ public class MongoDBListDao extends  MongoDB{
     }
 
     public ListModel readList(ListModel listModel) {
-        DBObject query = BasicDBObjectBuilder.start()
-                .append("_id", new ObjectId(listModel.getId())).get();
-        DBObject data = this.collection.findOne(query);
+        try {
+            DBObject query = BasicDBObjectBuilder.start()
+                    .append("_id", new ObjectId(listModel.getId())).get();
+            DBObject data = this.collection.findOne(query);
 
-        return ListConverter.toList(data);
+            if (data == null){
+                throw new NotFoundException();
+            }
+
+            return ListConverter.toList(data);
+        }catch (IllegalArgumentException e){
+            throw new NotFoundException();
+        }
+
     }
 
 
