@@ -1,5 +1,7 @@
 package main.java.model;
 
+import java.util.List;
+
 public class ListModel {
 
     // id will be used for primary key in MongoDB
@@ -11,6 +13,9 @@ public class ListModel {
 
     private String description;
 
+    private List<ItemModel> items;
+
+    ;
     public String getId() {
         return id;
     }
@@ -33,5 +38,13 @@ public class ListModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<ItemModel> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemModel> items) {
+        this.items = items;
     }
 }
