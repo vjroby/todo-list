@@ -1,16 +1,17 @@
 package main.java;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-@Path("/")
-public class Home {
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getHome()
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class Home extends HttpServlet{
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException
     {
-        return "home";
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

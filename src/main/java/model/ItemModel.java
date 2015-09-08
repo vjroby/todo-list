@@ -1,8 +1,6 @@
 package main.java.model;
 
-public class ItemModel {
-
-    private String id;
+public class ItemModel extends BaseModel{
 
     private String title;
 
@@ -40,14 +38,6 @@ public class ItemModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     private String description;

@@ -3,6 +3,10 @@ package main.java.filters;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerResponse;
 import com.sun.jersey.spi.container.ContainerResponseFilter;
+import main.java.dao.MongoDBAccessLogDao;
+import main.java.model.AccessLogModel;
+
+import java.util.Date;
 
 public class LoggingFilter extends com.sun.jersey.api.container.filter.LoggingFilter implements ContainerResponseFilter{
 
@@ -14,7 +18,12 @@ public class LoggingFilter extends com.sun.jersey.api.container.filter.LoggingFi
     public ContainerRequest filter(ContainerRequest arg0) {
         startTime.set(System.currentTimeMillis());
         String ip = arg0.getHeaderValue("X-Forwarded-For");
-        System.out.println("IP reqest: "+ ip);
+        System.out.println("IP reqest: " + ip);
+        AccessLogModel accessLogModel = new AccessLogModel();
+        accessLogModel.setIp(ip);
+        accessLogModel.setCreated(new Date());
+        MongoDBAccessLogDao mongoDBAccessLogDao = new MongoDBAccessLogDao();
+        mongoDBAccessLogDao.createAccessLog(accessLogModel);
         return arg0;
     }
     @Override
