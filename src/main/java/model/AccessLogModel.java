@@ -12,6 +12,10 @@ public class AccessLogModel extends BaseModel{
 
     private Date created;
 
+    private String urlPath;
+
+    private String userAgent;
+
     public String getIp() {
         return Ip;
     }
@@ -40,5 +44,21 @@ public class AccessLogModel extends BaseModel{
         }catch (ParseException e){
             System.out.println("Unparseable using " + ft);
         }
+    }
+
+    public String getUrlPath() {
+        return urlPath;
+    }
+
+    public void setUrlPath(String urlPath) {
+        this.urlPath = urlPath;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 }

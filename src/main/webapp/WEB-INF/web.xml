@@ -41,6 +41,11 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
+    <filter>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <filter-class>main.java.filters.LoggingRequestFilter</filter-class>
+    </filter>
+
     <servlet-mapping>
         <servlet-name>jersey-serlvet</servlet-name>
         <url-pattern>/services/*</url-pattern>
@@ -50,4 +55,11 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <filter-mapping>
+        <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
+        <url-pattern>/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
+        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-name>home-servlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
 </web-app>
