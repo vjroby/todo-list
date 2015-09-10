@@ -23,7 +23,7 @@ public class LoggingRequestFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         AccessLogModel accessLogModel = new AccessLogModel();
         accessLogModel.setCreated(new Date());
-        accessLogModel.setIp(request.getRemoteAddr());
+        accessLogModel.setIp(resolveIp(req));
         accessLogModel.setUrlPath(req.getRequestURI());
         accessLogModel.setUserAgent(req.getHeader("User-Agent"));
         MongoDBAccessLogDao mongoDBAccessLogDao = new MongoDBAccessLogDao();
@@ -35,5 +35,13 @@ public class LoggingRequestFilter implements Filter {
     @Override
     public void destroy() {
 
+    }
+
+    protected String resolveIp( HttpServletRequest request ) {
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+        return ipAddress;
     }
 }
