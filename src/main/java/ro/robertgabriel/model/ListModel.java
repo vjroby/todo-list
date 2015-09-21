@@ -1,4 +1,4 @@
-package main.java.model;
+package ro.robertgabriel.model;
 
 import java.util.List;
 

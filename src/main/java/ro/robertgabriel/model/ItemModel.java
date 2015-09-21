@@ -1,4 +1,4 @@
-package main.java.model;
+package ro.robertgabriel.model;
 
 public class ItemModel extends BaseModel{
 

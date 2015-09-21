@@ -1,4 +1,4 @@
-package main.java.dao;
+package ro.robertgabriel.dao;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;

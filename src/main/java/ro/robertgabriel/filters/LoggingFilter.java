@@ -1,4 +1,4 @@
-package main.java.filters;
+package  ro.robertgabriel.filters;
 
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerResponse;

@@ -1,4 +1,4 @@
-package main.java.listener;
+package ro.robertgabriel.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

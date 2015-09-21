@@ -1,7 +1,7 @@
-package main.java;
+package ro.robertgabriel;
 
 
-import main.java.dao.MongoDBListDao;
+import ro.robertgabriel.dao.MongoDBListDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

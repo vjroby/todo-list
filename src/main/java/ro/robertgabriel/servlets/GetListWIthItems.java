@@ -1,9 +1,9 @@
-package main.java.servlets;
+package ro.robertgabriel.servlets;
 
 import com.google.gson.Gson;
-import main.java.dao.MongoDBItemsDao;
-import main.java.dao.MongoDBListDao;
-import main.java.model.ListModel;
+import ro.robertgabriel.dao.MongoDBItemsDao;
+import ro.robertgabriel.dao.MongoDBListDao;
+import ro.robertgabriel.model.ListModel;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

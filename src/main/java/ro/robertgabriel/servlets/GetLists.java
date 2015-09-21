@@ -1,7 +1,7 @@
-package main.java.servlets;
+package ro.robertgabriel.servlets;
 
 import com.google.gson.Gson;
-import main.java.dao.MongoDBListDao;
+import ro.robertgabriel.dao.MongoDBListDao;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

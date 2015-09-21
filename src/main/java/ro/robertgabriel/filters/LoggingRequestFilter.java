@@ -1,7 +1,7 @@
-package main.java.filters;
+package ro.robertgabriel.filters;
 
-import main.java.dao.MongoDBAccessLogDao;
-import main.java.model.AccessLogModel;
+import ro.robertgabriel.dao.MongoDBAccessLogDao;
+import ro.robertgabriel.model.AccessLogModel;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
