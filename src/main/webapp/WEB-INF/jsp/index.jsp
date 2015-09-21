@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="main.java.model.ListModel" %>
+<%@ page import="ro.robertgabriel.model.ListModel" %>
 <%--@elvariable id="lists" type="java.util.List"--%>
 <%
   List lists = (List)request.getAttribute("lists");

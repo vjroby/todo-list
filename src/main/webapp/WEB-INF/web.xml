@@ -31,11 +31,11 @@
 
         <init-param>
             <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-            <param-value>main.java.ro.robertgabriel.filters.LoggingFilter</param-value>
+            <param-value>ro.robertgabriel.filters.LoggingFilter</param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-            <param-value>main.java.ro.robertgabriel.filters.LoggingFilter</param-value>
+            <param-value>ro.robertgabriel.filters.LoggingFilter</param-value>
         </init-param>
 
         <load-on-startup>1</load-on-startup>
@@ -46,17 +46,17 @@
         <servlet-class>ro.robertgabriel.Home</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-            <param-value>main.java.ro.robertgabriel.filters.LoggingFilter</param-value>
+            <param-value>ro.robertgabriel.filters.LoggingFilter</param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-            <param-value>main.java.ro.robertgabriel.filters.LoggingFilter</param-value>
+            <param-value>ro.robertgabriel.filters.LoggingFilter</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
-        <filter-class>main.java.filters.LoggingRequestFilter</filter-class>
+        <filter-class>ro.robertgabriel.filters.LoggingRequestFilter</filter-class>
     </filter>
 
     <servlet-mapping>
