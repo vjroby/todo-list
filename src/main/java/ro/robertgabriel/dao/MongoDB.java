@@ -11,8 +11,13 @@ import java.util.List;
 
 public class MongoDB {
 
+    private DB dbConnection;
+
     public DB getDbConnection() {
 
+        if (dbConnection != null){
+            return dbConnection;
+        }
         String host = getHost();
         String db = getDb();
         String user = getUser();
@@ -30,7 +35,8 @@ public class MongoDB {
 
             MongoClient mongoClient = new MongoClient(new ServerAddress(host, port), listMongoCredentials);
 
-            return mongoClient.getDB(db);
+            dbConnection = mongoClient.getDB(db);
+            return dbConnection;
 
         } catch (UnknownHostException e) {
             throw new RuntimeException("Failed to access Mongo server", e);
