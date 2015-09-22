@@ -8,12 +8,12 @@ import ro.robertgabriel.model.ListModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MongoDBItemsDao extends MongoDB{
+public class MongoDBItemsDao{
 
     private final DBCollection collection;
 
     public MongoDBItemsDao() {
-        DB mongoClient = getDbConnection();
+        DB mongoClient = MongoDB.getMongoDB().getDbConnection();
         this.collection = mongoClient.getCollection("items");
     }
 

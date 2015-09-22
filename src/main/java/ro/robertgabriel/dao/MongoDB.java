@@ -13,6 +13,8 @@ public class MongoDB {
 
     private DB dbConnection;
 
+    private static MongoDB mongoDB;
+
     public DB getDbConnection() {
 
         if (dbConnection != null){
@@ -42,6 +44,15 @@ public class MongoDB {
             throw new RuntimeException("Failed to access Mongo server", e);
         }
 
+    }
+
+    public static MongoDB getMongoDB() {
+        if (mongoDB != null){
+            return mongoDB;
+        }
+        MongoDB mongoDBInstance = new MongoDB();
+        mongoDB = mongoDBInstance;
+        return mongoDB;
     }
 
     private String getHost(){

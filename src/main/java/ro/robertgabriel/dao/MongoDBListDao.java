@@ -16,7 +16,7 @@ public class MongoDBListDao extends  MongoDB{
 
     public MongoDBListDao() {
 
-        DB mongoClient = getDbConnection();
+        DB mongoClient = MongoDB.getMongoDB().getDbConnection();
         this.collection = mongoClient.getCollection("lists");
 
     }
