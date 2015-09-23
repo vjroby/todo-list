@@ -16,6 +16,8 @@ public class AccessLogModel extends BaseModel{
 
     private String userAgent;
 
+    private String requestTime;
+
     public String getIp() {
         return Ip;
     }
@@ -60,5 +62,13 @@ public class AccessLogModel extends BaseModel{
 
     public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
+    }
+
+    public String getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(String requestTime) {
+        this.requestTime = requestTime;
     }
 }
