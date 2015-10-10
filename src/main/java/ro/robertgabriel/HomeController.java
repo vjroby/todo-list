@@ -1,20 +1,23 @@
 package ro.robertgabriel;
 
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ro.robertgabriel.dao.MongoDBListDao;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class Home extends HttpServlet{
+@Controller
+public class HomeController {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException
-    {
+
+    @ResponseBody
+    @RequestMapping("/")
+    public void getHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MongoDBListDao mongoDBListDao = new MongoDBListDao();
 
         List lists = mongoDBListDao.readAllList() ;
