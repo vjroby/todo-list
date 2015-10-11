@@ -6,4 +6,5 @@
 
     <bean name="mongiListDao" class="ro.robertgabriel.dao.MongoDBListDao"/>
     <bean name="mongoItems" class="ro.robertgabriel.dao.MongoDBItemsDao"/>
+    <bean name="frontendConfiguration" class="ro.robertgabriel.frontend.Configuration"></bean>
 </beans>

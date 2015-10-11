@@ -11,7 +11,9 @@
 
     <mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
 
-    <bean name="homeController" class="ro.robertgabriel.controllers.HomeController" />
+    <bean name="homeController" class="ro.robertgabriel.controllers.HomeController" >
+        <property name="configuration" ref="frontendConfiguration"></property>
+    </bean>
     <bean name="listController" class="ro.robertgabriel.controllers.ListsController" >
         <property name="mongoDBListDao" ref="mongiListDao"/>
         <property name="mongoDBItemsDao" ref="mongoItems"/>
