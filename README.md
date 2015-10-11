@@ -2,7 +2,7 @@ Todo List
 ====================
 
 This is a todo list web application.
-It uses Java EE with Jersey Framework.
+It uses Java EE with Spring Framework 4.1.6.
 
 The Application can be accessed ont the here: [http://todo-vjroby.rhcloud.com](http://todo-vjroby.rhcloud.com).
 In order to get a single list without items: `http://todo-vjroby.rhcloud.com/lists/{list_id}`
