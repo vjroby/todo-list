@@ -4,4 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
+    <bean name="mongiListDao" class="ro.robertgabriel.dao.MongoDBListDao"></bean>
+    <bean name="mongoItems" class="ro.robertgabriel.dao.MongoDBItemsDao"></bean>
 </beans>

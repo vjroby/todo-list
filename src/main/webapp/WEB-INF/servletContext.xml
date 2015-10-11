@@ -8,7 +8,10 @@
             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <mvc:annotation-driven />
-    <bean name="homeController" class="ro.robertgabriel.HomeController">
-
+    <bean name="homeController" class="ro.robertgabriel.controllers.HomeController" />
+    <bean name="listController" class="ro.robertgabriel.controllers.ListsController" >
+        <property name="mongoDBListDao" ref="mongiListDao"></property>
+        <property name="mongoDBItemsDao" ref="mongoItems"></property>
     </bean>
+
 </beans>
