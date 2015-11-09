@@ -11,6 +11,11 @@ import java.util.List;
 
 public class MongoDB {
 
+    public static final String OPENSHIFT_MONGODB_DB_HOST = "OPENSHIFT_MONGODB_DB_HOST";
+    public static final String OPENSHIFT_MONGODB_DB_PORT = "OPENSHIFT_MONGODB_DB_PORT";
+    public static final String OPENSHIFT_APP_NAME = "OPENSHIFT_APP_NAME";
+    public static final String OPENSHIFT_MONGODB_DB_USERNAME = "OPENSHIFT_MONGODB_DB_USERNAME";
+    public static final String OPENSHIFT_MONGODB_DB_PASSWORD = "OPENSHIFT_MONGODB_DB_PASSWORD";
     private DB dbConnection;
 
     private static MongoDB mongoDB;
@@ -57,7 +62,7 @@ public class MongoDB {
 
     private String getHost(){
 
-        String host = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
+        String host = System.getenv(OPENSHIFT_MONGODB_DB_HOST);
 
         if(host == null){
             throw new RuntimeException("The MongoDB host is not set");
@@ -67,7 +72,7 @@ public class MongoDB {
 
     private int getPort(){
 
-        String stringPort = System.getenv("OPENSHIFT_MONGODB_DB_PORT");
+        String stringPort = System.getenv(OPENSHIFT_MONGODB_DB_PORT);
 
         if(stringPort == null){
             throw new RuntimeException("The MongoDB port is not set");
@@ -77,7 +82,7 @@ public class MongoDB {
     }
 
     private String getDb() {
-        String db = System.getenv("OPENSHIFT_APP_NAME");
+        String db = System.getenv(OPENSHIFT_APP_NAME);
 
         if(db == null){
             throw new RuntimeException("The MongoDB database is not set");
@@ -86,7 +91,7 @@ public class MongoDB {
         return db;
     }
     private String getUser() {
-        String user = System.getenv("OPENSHIFT_MONGODB_DB_USERNAME");
+        String user = System.getenv(OPENSHIFT_MONGODB_DB_USERNAME);
 
         if(user == null){
             throw new RuntimeException("The MongoDB user is not set");
@@ -95,7 +100,7 @@ public class MongoDB {
         return user;
     }
     private String getPassword() {
-        String password = System.getenv("OPENSHIFT_MONGODB_DB_PASSWORD");
+        String password = System.getenv(OPENSHIFT_MONGODB_DB_PASSWORD);
 
         if(password == null){
             throw new RuntimeException("The MongoDB password is not set");
