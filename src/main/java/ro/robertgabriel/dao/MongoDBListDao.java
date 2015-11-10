@@ -1,8 +1,8 @@
 package ro.robertgabriel.dao;
 
 import com.mongodb.*;
-import com.sun.jersey.api.NotFoundException;
 import ro.robertgabriel.converter.ListConverter;
+import ro.robertgabriel.exceptions.ResourceNotFoundException;
 import ro.robertgabriel.model.ListModel;
 import org.bson.types.ObjectId;
 
@@ -59,12 +59,12 @@ public class MongoDBListDao extends  MongoDB{
             DBObject data = this.collection.findOne(query);
 
             if (data == null){
-                throw new NotFoundException();
+                throw new ResourceNotFoundException();
             }
 
             return ListConverter.toList(data);
         }catch (IllegalArgumentException e){
-            throw new NotFoundException();
+            throw new ResourceNotFoundException();
         }
 
     }
