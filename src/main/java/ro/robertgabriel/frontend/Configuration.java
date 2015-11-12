@@ -8,7 +8,7 @@ public class Configuration {
     private List<MenuItem> menuItems;
     private String appSubtitle = "Create your own todo list...SOON!";
 
-    Configuration(){
+    public Configuration(){
         List<MenuItem> menuItemList = new LinkedList<MenuItem>();
         menuItemList.add((new MenuItem().setName("Home").setUrl("#top")));
         menuItemList.add((new MenuItem().setName("About").setUrl("#about")));
