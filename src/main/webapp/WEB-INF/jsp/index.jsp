@@ -45,8 +45,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-                <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+                <h2>Let us help you not forget to do things anymore!</h2>
+                <p class="lead">You can explore the rich features of the application before making an <a href="signup">account.</a></p>
             </div>
         </div>
         <!-- /.row -->
@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-10 col-lg-offset-1">
-                <h2>Our Services</h2>
+                <h2>Application Features</h2>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
@@ -70,9 +70,9 @@
                                 <i class="fa fa-cloud fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Service Name</strong>
+                                <strong>Security</strong>
                             </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Using Spring Security</p>
                             <a href="#" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
@@ -83,9 +83,9 @@
                                 <i class="fa fa-compass fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Service Name</strong>
+                                <strong>NoSQL</strong>
                             </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>For data persistance we use MongoDB</p>
                             <a href="#" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
@@ -96,9 +96,9 @@
                                 <i class="fa fa-flask fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Service Name</strong>
+                                <strong>Java Spring Framework</strong>
                             </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>For our backend we are using the Spring MVC Framework version 4.1.6</p>
                             <a href="#" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
@@ -109,9 +109,9 @@
                                 <i class="fa fa-shield fa-stack-1x text-primary"></i>
                             </span>
                             <h4>
-                                <strong>Service Name</strong>
+                                <strong>Openshift</strong>
                             </h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>For deployment we are using JBoss</p>
                             <a href="#" class="btn btn-light">Learn More</a>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
 <!-- Callout -->
 <aside class="callout">
     <div class="text-vertical-center">
-        <h1>Vertically Centered Text</h1>
+        <h1>Start Planning</h1>
     </div>
 </aside>
 
@@ -137,7 +137,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <h2>Our Work</h2>
+                <h2>Keep track of your ideas...</h2>
                 <hr class="small">
                 <div class="row">
                     <div class="col-md-6">
@@ -184,9 +184,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3>The buttons below are impossible to resist.</h3>
-                <a href="#" class="btn btn-lg btn-light">Click Me!</a>
-                <a href="#" class="btn btn-lg btn-dark">Look at Me!</a>
+                <h3>Make an account or Login In</h3>
+                <a href="/signup" class="btn btn-lg btn-light">Sign Up</a>
+                <a href="/login" class="btn btn-lg btn-dark">Log In!</a>
             </div>
         </div>
     </div>
