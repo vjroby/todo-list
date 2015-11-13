@@ -13,7 +13,7 @@ public class Configuration {
         menuItemList.add((new MenuItem().setName("Home").setUrl("#top")));
         menuItemList.add((new MenuItem().setName("About").setUrl("#about")));
         menuItemList.add((new MenuItem().setName("Services").setUrl("#services")));
-        menuItemList.add((new MenuItem().setName("Portfolio").setUrl("#portfolio")));
+        menuItemList.add((new MenuItem().setName("Ideas").setUrl("#ideas")));
         menuItemList.add((new MenuItem().setName("Contact").setUrl("#contact")));
         this.setMenuItems(menuItemList);
     }
