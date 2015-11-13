@@ -184,7 +184,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3>Make an account or Login In</h3>
+                <h3>Make an account or Login</h3>
                 <a href="/signup" class="btn btn-lg btn-light">Sign Up</a>
                 <a href="/login" class="btn btn-lg btn-dark">Log In!</a>
             </div>
