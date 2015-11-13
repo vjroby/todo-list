@@ -9,11 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = {"/loginPage"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
                                   @RequestParam(value = "logout", required = false) String logout) {
 
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("loginPage");
 
         if (error != null) {
             model.addObject("error", "Invalid Credentials provided.");
@@ -23,7 +23,6 @@ public class LoginController {
             model.addObject("message", "Logged out!");
         }
 
-        model.setViewName("loginPage");
         return model;
     }
 }
