@@ -6,7 +6,7 @@ import ro.robertgabriel.dao.MongoDBItemsDao;
 import ro.robertgabriel.dao.MongoDBListDao;
 import ro.robertgabriel.frontend.Configuration;
 
-@Import({SecurityConfiguration.class})
+//@Import({SecurityConfiguration.class})
 @org.springframework.context.annotation.Configuration
 public class RootContextConfiguration {
 
