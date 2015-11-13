@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@Configuration
+//@Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -31,22 +31,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity security) throws Exception {
         security
-                .authorizeRequests().anyRequest().permitAll();
-//                    .antMatchers("/signup","/").permitAll()
-//                    .anyRequest().authenticated()
-//                .and().formLogin()
-//                    .loginPage("/login").failureUrl("/login?error")
-//                    .defaultSuccessUrl("/secure")
-//                    .usernameParameter("username")
-//                    .passwordParameter("password")
-//                    .permitAll()
-//                .and().logout()
-//                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedUut")
-//                    .invalidateHttpSession(true).deleteCookies("JESSIONID")
-//                    .permitAll()
-////                .and().sessionManagement()
-////                    .sessionFixation().changeSessionId()
-//                .and().csrf().disable();
+                .authorizeRequests()
+                    .antMatchers("/signup","/").permitAll()
+                    .anyRequest().authenticated()
+                .and().formLogin()
+                    .loginPage("/login").failureUrl("/login?error")
+                    .defaultSuccessUrl("/secure")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .permitAll()
+                .and().logout()
+                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedUut")
+                    .invalidateHttpSession(true).deleteCookies("JESSIONID")
+                    .permitAll()
+//                .and().sessionManagement()
+//                    .sessionFixation().changeSessionId()
+                .and().csrf().disable();
 
     }
 }
