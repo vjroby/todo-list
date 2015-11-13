@@ -1,9 +1,9 @@
-package main.java.converter;
+package ro.robertgabriel.converter;
 
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
-import main.java.model.ListModel;
 import org.bson.types.ObjectId;
+import ro.robertgabriel.model.ListModel;
 
 public class ListConverter {
 

@@ -1,8 +1,8 @@
-package main.java.converter;
+package ro.robertgabriel.converter;
 
 import com.mongodb.DBObject;
-import main.java.model.ItemModel;
 import org.bson.types.ObjectId;
+import ro.robertgabriel.model.ItemModel;
 
 public class ItemConverter {
 

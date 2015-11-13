@@ -1,9 +1,9 @@
-package main.java.dao;
+package ro.robertgabriel.dao;
 
 import com.mongodb.*;
 import com.sun.jersey.api.NotFoundException;
-import main.java.converter.ListConverter;
-import main.java.model.ListModel;
+import ro.robertgabriel.converter.ListConverter;
+import ro.robertgabriel.model.ListModel;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class MongoDBListDao extends  MongoDB{
 
     public MongoDBListDao() {
 
-        DB mongoClient = getDbConnection();
+        DB mongoClient = MongoDB.getMongoDB().getDbConnection();
         this.collection = mongoClient.getCollection("lists");
 
     }

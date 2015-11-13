@@ -1,4 +1,4 @@
-package main.java.model;
+package ro.robertgabriel.model;
 
 abstract public class BaseModel {
 

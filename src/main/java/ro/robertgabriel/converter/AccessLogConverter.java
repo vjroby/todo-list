@@ -1,9 +1,9 @@
-package main.java.converter;
+package ro.robertgabriel.converter;
 
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
-import main.java.model.AccessLogModel;
 import org.bson.types.ObjectId;
+import ro.robertgabriel.model.AccessLogModel;
 
 public class AccessLogConverter {
 
@@ -15,6 +15,7 @@ public class AccessLogConverter {
         accessLogModel.setCreatedFromString(dbObject.get("created").toString());
         accessLogModel.setUrlPath(dbObject.get("url_path").toString());
         accessLogModel.setUserAgent(dbObject.get("user_agent").toString());
+        accessLogModel.setRequestTime(dbObject.get("request_time").toString());
         return accessLogModel;
     }
 
@@ -23,6 +24,7 @@ public class AccessLogConverter {
                 .append("ip", accessLogModel.getIp())
                 .append("created", accessLogModel.getCreatedString())
                 .append("url_path", accessLogModel.getUrlPath())
+                .append("request_time", accessLogModel.getRequestTime())
                 .append("user_agent", accessLogModel.getUserAgent());
 
         if (accessLogModel.getId() != null){

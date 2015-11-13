@@ -1,19 +1,19 @@
-package main.java.dao;
+package ro.robertgabriel.dao;
 
 import com.mongodb.*;
-import main.java.converter.ItemConverter;
-import main.java.model.ItemModel;
-import main.java.model.ListModel;
+import ro.robertgabriel.converter.ItemConverter;
+import ro.robertgabriel.model.ItemModel;
+import ro.robertgabriel.model.ListModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MongoDBItemsDao extends MongoDB{
+public class MongoDBItemsDao{
 
     private final DBCollection collection;
 
     public MongoDBItemsDao() {
-        DB mongoClient = getDbConnection();
+        DB mongoClient = MongoDB.getMongoDB().getDbConnection();
         this.collection = mongoClient.getCollection("items");
     }
 

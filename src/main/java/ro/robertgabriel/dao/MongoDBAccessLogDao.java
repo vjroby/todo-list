@@ -1,18 +1,18 @@
-package main.java.dao;
+package ro.robertgabriel.dao;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import main.java.converter.AccessLogConverter;
-import main.java.model.AccessLogModel;
 import org.bson.types.ObjectId;
+import ro.robertgabriel.converter.AccessLogConverter;
+import ro.robertgabriel.model.AccessLogModel;
 
-public class MongoDBAccessLogDao extends MongoDB{
+public class MongoDBAccessLogDao{
 
     private final DBCollection collection;
 
     public MongoDBAccessLogDao() {
-        DB mongoClient = getDbConnection();
+        DB mongoClient = MongoDB.getMongoDB().getDbConnection();
         this.collection = mongoClient.getCollection("access_logs");
     }
 

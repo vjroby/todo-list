@@ -3,63 +3,68 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <url-pattern>*.jspf</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <scripting-invalid>false</scripting-invalid>
+            <include-prelude>/WEB-INF/jsp/base.jspf</include-prelude>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+            <default-content-type>text/html</default-content-type>
+        </jsp-property-group>
+    </jsp-config>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/resource/*</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/rootContext.xml</param-value>
+    </context-param>
+
     <servlet>
-        <display-name>Todo Web App</display-name>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-class>
-            com.sun.jersey.spi.container.servlet.ServletContainer
-        </servlet-class>
-
-
+        <servlet-name>springDispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/servletContext.xml</param-value>
         </init-param>
-
-        <init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-            <param-value>main.java.filters.LoggingFilter</param-value>
-        </init-param>
-        <init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-            <param-value>main.java.filters.LoggingFilter</param-value>
-        </init-param>
-
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <servlet>
-        <servlet-name>home-servlet</servlet-name>
-        <servlet-class>main.java.Home</servlet-class>
-        <init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-            <param-value>main.java.filters.LoggingFilter</param-value>
-        </init-param>
-        <init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-            <param-value>main.java.filters.LoggingFilter</param-value>
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-    <filter>
-        <filter-name>RequestLoggingFilter</filter-name>
-        <filter-class>main.java.filters.LoggingRequestFilter</filter-class>
-    </filter>
-
     <servlet-mapping>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>home-servlet</servlet-name>
+        <servlet-name>springDispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <filter-class>ro.robertgabriel.filters.LoggingRequestFilter</filter-class>
+    </filter>
+
+
 
     <filter-mapping>
         <filter-name>RequestLoggingFilter</filter-name> <!-- mandatory -->
         <url-pattern>/*</url-pattern> <!-- either url-pattern or servlet-name is mandatory -->
-        <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-name>home-servlet</servlet-name>
+
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
 </web-app>
