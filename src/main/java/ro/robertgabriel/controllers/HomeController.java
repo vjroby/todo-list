@@ -29,7 +29,7 @@ public class HomeController {
         request.setAttribute("lists", lists);
         request.setAttribute("configuration", getConfiguration());
 
-        request.getRequestDispatcher("todo/WEB-INF/jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
     }
 
     public Configuration getConfiguration() {
