@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -21,15 +20,16 @@ public class HomeController {
 
     @ResponseBody
     @RequestMapping("/")
-    public void getHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String getHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MongoDBListDao mongoDBListDao = new MongoDBListDao();
 
-        List lists = mongoDBListDao.readAllList() ;
-
-        request.setAttribute("lists", lists);
-        request.setAttribute("configuration", getConfiguration());
-
-        request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
+//        List lists = mongoDBListDao.readAllList() ;
+//
+//        request.setAttribute("lists", lists);
+//        request.setAttribute("configuration", getConfiguration());
+//
+//        request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
+        return "Home test";
     }
 
     public Configuration getConfiguration() {
