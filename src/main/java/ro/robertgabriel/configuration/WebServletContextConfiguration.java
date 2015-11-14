@@ -8,9 +8,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import ro.robertgabriel.controllers.HomeController;
-import ro.robertgabriel.controllers.ListsController;
-import ro.robertgabriel.controllers.LoginController;
 import ro.robertgabriel.dao.MongoDBItemsDao;
 import ro.robertgabriel.dao.MongoDBListDao;
 
@@ -31,27 +28,27 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/resources/**").addResourceLocations("WEB-INF/resources/");
     }
 
-    @Bean
-    public HomeController homeController()
-    {
-        HomeController homeController = new HomeController();
-        homeController.setConfiguration(frontEndConfiguration);
-        return homeController;
-    }
-
-    @Bean
-    public ListsController listsController()
-    {
-        ListsController listsController = new ListsController();
-        listsController.setMongoDBItemsDao(mongoDBItems);
-        listsController.setMongoDBListDao(mongoDBListDao);
-        return  listsController;
-    }
-    @Bean
-    public LoginController loginController()
-    {
-        return new LoginController();
-    }
+//    @Bean
+//    public HomeController homeController()
+//    {
+//        HomeController homeController = new HomeController();
+//        homeController.setConfiguration(frontEndConfiguration);
+//        return homeController;
+//    }
+//
+//    @Bean
+//    public ListsController listsController()
+//    {
+//        ListsController listsController = new ListsController();
+//        listsController.setMongoDBItemsDao(mongoDBItems);
+//        listsController.setMongoDBListDao(mongoDBListDao);
+//        return  listsController;
+//    }
+//    @Bean
+//    public LoginController loginController()
+//    {
+//        return new LoginController();
+//    }
 
     @Bean
     public ViewResolver viewResolver()

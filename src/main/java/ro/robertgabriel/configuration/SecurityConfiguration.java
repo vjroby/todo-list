@@ -30,23 +30,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity security) throws Exception {
-        security
-                .authorizeRequests()
-                    .antMatchers("/signup","/").permitAll()
-                    .anyRequest().authenticated()
-                .and().formLogin()
-                    .loginPage("/login").failureUrl("/login?error")
-                    .defaultSuccessUrl("/secure")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .permitAll()
-                .and().logout()
-                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedUut")
-                    .invalidateHttpSession(true).deleteCookies("JESSIONID")
-                    .permitAll()
-//                .and().sessionManagement()
-//                    .sessionFixation().changeSessionId()
-                .and().csrf().disable();
+//        security
+//                .authorizeRequests()
+//                    .antMatchers("/signup","/").permitAll()
+//                    .anyRequest().authenticated()
+//                .and().formLogin()
+//                    .loginPage("/login").failureUrl("/login?error")
+//                    .defaultSuccessUrl("/secure")
+//                    .usernameParameter("username")
+//                    .passwordParameter("password")
+//                    .permitAll()
+//                .and().logout()
+//                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedUut")
+//                    .invalidateHttpSession(true).deleteCookies("JESSIONID")
+//                    .permitAll()
+////                .and().sessionManagement()
+////                    .sessionFixation().changeSessionId()
+//                .and().csrf().disable();
+
 
     }
 }
