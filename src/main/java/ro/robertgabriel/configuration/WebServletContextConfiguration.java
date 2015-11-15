@@ -20,7 +20,7 @@ import javax.inject.Inject;
 @EnableWebMvc
 public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
     @Inject
-    ro.robertgabriel.frontend.Configuration frontEndConfiguration;
+    ro.robertgabriel.frontend.FrontEndConfiguration frontEndConfiguration;
     @Inject
     MongoDBListDao mongoDBListDao;
     @Inject
@@ -35,7 +35,7 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
     public HomeController homeController()
     {
         HomeController homeController = new HomeController();
-        homeController.setConfiguration(frontEndConfiguration);
+        homeController.setFrontEndConfiguration(frontEndConfiguration);
         return homeController;
     }
 

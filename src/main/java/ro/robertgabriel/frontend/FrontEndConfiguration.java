@@ -3,12 +3,12 @@ package ro.robertgabriel.frontend;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Configuration {
+public class FrontEndConfiguration {
     private String appName = "Todo List Web App";
     private List<MenuItem> menuItems;
     private String appSubtitle = "Create your own todo list...SOON!";
 
-    public Configuration(){
+    public FrontEndConfiguration(){
         List<MenuItem> menuItemList = new LinkedList<MenuItem>();
         menuItemList.add((new MenuItem().setName("Home").setUrl("#top")));
         menuItemList.add((new MenuItem().setName("About").setUrl("#about")));

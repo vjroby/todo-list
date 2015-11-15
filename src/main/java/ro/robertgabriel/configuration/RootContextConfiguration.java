@@ -2,10 +2,11 @@ package ro.robertgabriel.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import ro.robertgabriel.dao.MongoDBItemsDao;
 import ro.robertgabriel.dao.MongoDBListDao;
-import ro.robertgabriel.frontend.Configuration;
+import ro.robertgabriel.frontend.FrontEndConfiguration;
 
 @ComponentScan(
         basePackages = "ro.robertgabriel"
@@ -13,7 +14,7 @@ import ro.robertgabriel.frontend.Configuration;
 //        @ComponentScan.Filter({Controller.class, ControllerAdvice.class})
 )
 @Import({SecurityConfiguration.class})
-@org.springframework.context.annotation.Configuration
+@Configuration
 public class RootContextConfiguration {
 
     @Bean
@@ -29,8 +30,8 @@ public class RootContextConfiguration {
     }
 
     @Bean
-    public Configuration frontEndConfiguration()
+    public FrontEndConfiguration frontEndConfiguration()
     {
-        return new Configuration();
+        return new FrontEndConfiguration();
     }
 }
