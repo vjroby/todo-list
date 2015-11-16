@@ -20,13 +20,13 @@ public class UserDetailsService implements org.springframework.security.core.use
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         System.out.println("Getting access details from employee dao !!");
-        User user = (User)userRepository.findByEmail(s);
-        if (user != null){
+        List<User> userList = userRepository.findByEmail(email);
+        if (userList.size() != 0){
             List<GrantedAuthority> auth = AuthorityUtils
                     .commaSeparatedStringToAuthorityList("ROLE_USER");
-
+            User user = userList.get(0);
             UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(),
                     true, true, true, true, auth);
             return userDetails;
