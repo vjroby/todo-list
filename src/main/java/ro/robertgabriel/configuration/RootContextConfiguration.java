@@ -58,7 +58,4 @@ public class RootContextConfiguration {
         return new FrontEndConfiguration();
     }
 
-
-
-
 }

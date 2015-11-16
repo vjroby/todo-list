@@ -32,4 +32,8 @@ public class LoginController {
 
         return new ModelAndView("signupPage");
     }
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+    public ModelAndView welcomePage(){
+        return new ModelAndView("welcomePage");
+    }
 }
