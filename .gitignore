@@ -29,6 +29,5 @@ jboss/server/minimal/work/**/*
 .project
 .settings/
 out/
-.idea/
 target
-.idea
+todo.iml
