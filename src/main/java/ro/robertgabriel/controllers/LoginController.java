@@ -26,4 +26,10 @@ public class LoginController {
 
         return model;
     }
+
+    @RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
+    public ModelAndView sigupPage(){
+
+        return new ModelAndView("signupPage");
+    }
 }

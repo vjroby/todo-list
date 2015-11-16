@@ -2,9 +2,14 @@ package ro.robertgabriel.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @Document(collection = "users")
 public class User {
 
+    @GeneratedValue
+    @Id
     private String id;
     private String email;
     private String name;
