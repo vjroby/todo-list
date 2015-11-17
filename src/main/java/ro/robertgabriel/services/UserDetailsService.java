@@ -7,8 +7,10 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.robertgabriel.entities.User;
+import ro.robertgabriel.exceptions.EmailExistsException;
 import ro.robertgabriel.repositories.UserRepository;
 
 import java.util.ArrayList;
@@ -20,6 +22,9 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Qualifier("userRepository")
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -33,9 +38,8 @@ public class UserDetailsService implements org.springframework.security.core.use
             List<GrantedAuthority> auth = AuthorityUtils
                     .commaSeparatedStringToAuthorityList("ROLE_USER");
             User user = userList.get(0);
-            UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                     true, true, true, true, auth);
-            return userDetails;
         }else{
             throw  new UsernameNotFoundException("User not found");
         }
@@ -49,5 +53,20 @@ public class UserDetailsService implements org.springframework.security.core.use
             authorities.add(new SimpleGrantedAuthority(role));
         }
         return authorities;
+    }
+
+    public User registerNewUserAccount(User user) throws EmailExistsException {
+        if(emailExist(user.getEmail())) {
+            throw new EmailExistsException("There is an account with that email adress: "  +
+                    user.getEmail());
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
+
+    private boolean emailExist(String email) {
+        List<User> userList = userRepository.findByEmail(email);
+        return userList.size() != 0;
     }
 }
