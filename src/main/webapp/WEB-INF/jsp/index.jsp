@@ -204,12 +204,6 @@
 
 <jsp:include page="footer.jsp" />
 
-<!-- jQuery -->
-<script src="resources/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="resources/js/bootstrap.min.js"></script>
-
 <!-- Custom Theme JavaScript -->
 <script>
     // Closes the sidebar menu
@@ -243,20 +237,7 @@
 </script>
 
 </body>
-<%--<body>--%>
-<%--<div class="col-md-12">--%>
-  <%--<h2>Welcome!</h2>--%>
-  <%--<p>If you want to go go to lists just follow the below links:</p>--%>
 
-  <%--<a href="<c:url value="/services/lists" />" class="btn btn-default" style="margin-bottom: 10px">See al the lists</a>--%>
-<%--</div>--%>
-<%--<div class="col-md-12" >--%>
-<%--<c:forEach items="${lists}" var="list">--%>
- <%--<a href="<c:url value="/services/lists/${list.getId()}" />" class="btn btn-info" >${list.getTitle()}</a>--%>
- <%--<a href="<c:url value="/services/lists/${list.getId()}" />/items/" class="btn btn-info" >${list.getTitle()} with items</a>--%>
-<%--</c:forEach>--%>
-<%--</div>--%>
-<%--</body>--%>
 
 
 </html>

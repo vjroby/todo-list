@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ro.robertgabriel.dao.MongoDBListDao;
-import ro.robertgabriel.entities.User;
 import ro.robertgabriel.frontend.FrontEndConfiguration;
 import ro.robertgabriel.repositories.UserRepository;
 
@@ -36,12 +35,6 @@ public class HomeController {
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public void getHome(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MongoDBListDao mongoDBListDao = new MongoDBListDao();
-
-        User user = new User();
-        user.setEmail("first@test.com");
-        user.setName("First");
-        user.setPassword("password");
-
 
         log.debug("Inside HomeController@getHome");
         List lists = mongoDBListDao.readAllList() ;

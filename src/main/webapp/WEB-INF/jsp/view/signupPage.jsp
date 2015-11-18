@@ -15,22 +15,21 @@
           <form:form role="form" method="post" modelAttribute="user" enctype="utf8">
             <fieldset>
               <div class="form-group">
-                <form:input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="autofocus"  path="email"/>
+                <form:input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="autofocus"  path="email"  />
               </div>
               <div class="form-group">
                 <form:input class="form-control" placeholder="Password" name="password" type="password" value="" path="password" />
               </div>
               <div class="form-group">
-                <form:input class="form-control" placeholder="Name" name="name" type="text" value="" path="name" />
+                <form:input class="form-control" placeholder="First name" name="firstName" type="text" value="" path="firstName"  />
               </div>
-              <div class="checkbox">
-                <label>
-                  <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                </label>
+              <div class="form-group">
+                <form:input class="form-control" placeholder="Last Name" name="lastName" type="text" value="" path="lastName"  />
               </div>
+
               <!-- Change this to a button or input when using this as a form -->
-              <input type="submit" value="SignUp" class="btn btn-primary"/>
-              <a href="<c:url value="/login" />" class="btn btn-info">
+              <input type="submit" value="SignUp" class="btn btn-primary btn-block"/>
+              <a href="<c:url value="/login" />" class="btn btn-info btn-block">
                 Login
               </a>
             </fieldset>
