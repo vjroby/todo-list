@@ -1,6 +1,5 @@
 package ro.robertgabriel.entities;
 
-import com.sun.istack.internal.NotNull;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
