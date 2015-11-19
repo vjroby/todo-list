@@ -16,16 +16,12 @@ public class User {
     @Id
     private String id;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String firstName;
 
-    @NotNull
     private String lastName;
 
-    @NotNull
     private String password;
     private boolean enabled;
     private boolean tokenExpired;
