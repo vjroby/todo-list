@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import ro.robertgabriel.dao.MongoDBItemsDao;
 import ro.robertgabriel.dao.MongoDBListDao;
@@ -41,21 +42,27 @@ public class RootContextConfiguration {
             LogManager.getLogger(log.getName() + ".[scheduling]");
 
     @Bean
-    public MongoDBListDao mongoDBListDao ()
-    {
+    public MongoDBListDao mongoDBListDao() {
         return new MongoDBListDao();
     }
 
     @Bean
-    public MongoDBItemsDao mongoDBItemsDao()
-    {
+    public MongoDBItemsDao mongoDBItemsDao() {
         return new MongoDBItemsDao();
     }
 
     @Bean
-    public FrontEndConfiguration frontEndConfiguration()
-    {
+    public FrontEndConfiguration frontEndConfiguration() {
         return new FrontEndConfiguration();
     }
+
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean() throws ClassNotFoundException
+     {
+        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
+        validator.setProviderClass(Class.forName("org.hibernate.validator.HibernateValidator"));
+        return validator;
+    }
+
 
 }
