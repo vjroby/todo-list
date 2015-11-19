@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="ro.robertgabriel.frontend.Configuration" %>
+<%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
+<%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
 <%--@elvariable id="lists" type="java.util.List"--%>
 <%--@elvariable id="configuration" type="ro.robertgabriel.frontend.Configuration"--%>
 <%
-  Configuration configuration = (Configuration)request.getAttribute("configuration");
-  String appName = configuration.getAppName();
-  String subTitle = configuration.getAppSubtitle();
+  FrontEndConfiguration frontEndConfiguration = (FrontEndConfiguration) request.getAttribute("configuration");
+  String appName = frontEndConfiguration.getAppName();
+  String subTitle = frontEndConfiguration.getAppSubtitle();
 %>
 <!-- Footer -->
 <footer id="contact">

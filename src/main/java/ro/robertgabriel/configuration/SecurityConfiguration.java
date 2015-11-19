@@ -1,26 +1,29 @@
 package ro.robertgabriel.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ro.robertgabriel.services.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
-        builder.inMemoryAuthentication()
-                .withUser("Robert")
-                .password("password")
-                .authorities("USER")
-                .and()
-                .withUser("Gabriel")
-                .password("gabi")
-                .authorities("USER", "ADMIN");
+        builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -36,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                 .and().formLogin()
                     .loginPage("/login").failureUrl("/login?error")
-                    .defaultSuccessUrl("/secure")
+                    .defaultSuccessUrl("/welcome")
                     .usernameParameter("username")
                     .passwordParameter("password")
                     .permitAll()
@@ -49,5 +52,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
 
 
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

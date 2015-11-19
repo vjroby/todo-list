@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ro.robertgabriel.model.ListModel" %>
-<%@ page import="ro.robertgabriel.frontend.Configuration" %>
+<%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
 <%@ page import="ro.robertgabriel.frontend.MenuItem" %>
 <%--@elvariable id="lists" type="java.util.List"--%>
 <%--@elvariable id="configuration" type="ro.robertgabriel.frontend.Configuration"--%>
 <%
     List lists = (List)request.getAttribute("lists");
-    Configuration configuration = (Configuration)request.getAttribute("configuration");
-    String appName = configuration.getAppName();
-    String subTitle = configuration.getAppSubtitle();
+    FrontEndConfiguration frontEndConfiguration = (FrontEndConfiguration) request.getAttribute("configuration");
+    String appName = frontEndConfiguration.getAppName();
+    String subTitle = frontEndConfiguration.getAppSubtitle();
 %>
 
 <body>
@@ -204,12 +204,6 @@
 
 <jsp:include page="footer.jsp" />
 
-<!-- jQuery -->
-<script src="resources/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="resources/js/bootstrap.min.js"></script>
-
 <!-- Custom Theme JavaScript -->
 <script>
     // Closes the sidebar menu
@@ -243,20 +237,7 @@
 </script>
 
 </body>
-<%--<body>--%>
-<%--<div class="col-md-12">--%>
-  <%--<h2>Welcome!</h2>--%>
-  <%--<p>If you want to go go to lists just follow the below links:</p>--%>
 
-  <%--<a href="<c:url value="/services/lists" />" class="btn btn-default" style="margin-bottom: 10px">See al the lists</a>--%>
-<%--</div>--%>
-<%--<div class="col-md-12" >--%>
-<%--<c:forEach items="${lists}" var="list">--%>
- <%--<a href="<c:url value="/services/lists/${list.getId()}" />" class="btn btn-info" >${list.getTitle()}</a>--%>
- <%--<a href="<c:url value="/services/lists/${list.getId()}" />/items/" class="btn btn-info" >${list.getTitle()} with items</a>--%>
-<%--</c:forEach>--%>
-<%--</div>--%>
-<%--</body>--%>
 
 
 </html>
