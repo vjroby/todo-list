@@ -2,6 +2,7 @@ package ro.robertgabriel.configuration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.*;
 import org.springframework.core.Ordered;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -60,7 +61,7 @@ public class RootContextConfiguration {
     public LocalValidatorFactoryBean localValidatorFactoryBean() throws ClassNotFoundException
      {
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-        validator.setProviderClass(Class.forName("org.hibernate.validator.HibernateValidator"));
+        validator.setProviderClass(HibernateValidator.class);
         return validator;
     }
 

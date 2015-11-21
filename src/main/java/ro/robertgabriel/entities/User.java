@@ -6,6 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Document(collection = "users")
@@ -14,13 +16,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private String id;
-
+    @NotNull
+    @Size(min=1, max=50)
     private String email;
 
+    @NotNull
+    @Size(min=1, max=50)
     private String firstName;
 
+    @NotNull
+    @Size(min=1, max=50)
     private String lastName;
 
+    @NotNull
+    @Size(min=1, max=50)
     private String password;
     private boolean enabled;
     private boolean tokenExpired;

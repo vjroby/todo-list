@@ -64,7 +64,10 @@ public class UserDetailsService implements org.springframework.security.core.use
             throw new EmailExistsException("There is an account with that email adress: "  +
                     user.getEmail());
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (user.getPassword() != null){
+
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
         user.setCreated(new Date());
         return userRepository.save(user);

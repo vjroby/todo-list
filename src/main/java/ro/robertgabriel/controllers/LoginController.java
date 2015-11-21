@@ -3,24 +3,28 @@ package ro.robertgabriel.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.entities.User;
 import ro.robertgabriel.exceptions.EmailExistsException;
 import ro.robertgabriel.services.UserDetailsService;
 
+import javax.validation.Valid;
+
 @Controller
 public class LoginController {
 
+    @InitBinder     /* Converts empty strings into null when a form is submitted */
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+    }
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -53,7 +57,7 @@ public class LoginController {
 
     @RequestMapping(value = {"/signup"}, method = RequestMethod.POST)
     public ModelAndView createUserAccount(
-            @ModelAttribute @Validated User user,
+            @ModelAttribute("user") @Valid User user,
             BindingResult result, WebRequest request, Errors errors){
         log.debug("Registration started");
 

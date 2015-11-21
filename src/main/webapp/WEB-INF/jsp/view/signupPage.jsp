@@ -18,13 +18,13 @@
                 <form:input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="autofocus"  path="email"  />
               </div>
               <div class="form-group">
-                <form:input class="form-control" placeholder="Password" name="password" type="password" value="" path="password" />
+                <form:input class="form-control" placeholder="Password" name="password" type="password" path="password" />
               </div>
               <div class="form-group">
-                <form:input class="form-control" placeholder="First name" name="firstName" type="text" value="" path="firstName"  />
+                <form:input class="form-control" placeholder="First name" name="firstName" type="text" path="firstName"  />
               </div>
               <div class="form-group">
-                <form:input class="form-control" placeholder="Last Name" name="lastName" type="text" value="" path="lastName"  />
+                <form:input class="form-control" placeholder="Last Name" name="lastName" type="text"  path="lastName"  />
               </div>
 
               <!-- Change this to a button or input when using this as a form -->
