@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -87,6 +88,7 @@ public class LoginController {
         try{
             registered = userDetailsService.registerNewUserAccount(user);
         }catch (EmailExistsException e){
+            result.addError(new ObjectError("email","Duplicate email"));
             return null;
         }
         return registered;

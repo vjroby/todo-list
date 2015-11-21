@@ -16,15 +16,19 @@
             <fieldset>
               <div class="form-group">
                 <form:input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="autofocus"  path="email"  />
+                <form:errors path="email" cssStyle="color: #ff0000;"/>
               </div>
               <div class="form-group">
                 <form:input class="form-control" placeholder="Password" name="password" type="password" path="password" />
+                <form:errors path="password" cssStyle="color: #ff0000;"/>
               </div>
               <div class="form-group">
                 <form:input class="form-control" placeholder="First name" name="firstName" type="text" path="firstName"  />
+                <form:errors path="firstName" cssStyle="color: #ff0000;"/>
               </div>
               <div class="form-group">
                 <form:input class="form-control" placeholder="Last Name" name="lastName" type="text"  path="lastName"  />
+                <form:errors path="lastName" cssStyle="color: #ff0000;"/>
               </div>
 
               <!-- Change this to a button or input when using this as a form -->
@@ -34,6 +38,7 @@
               </a>
             </fieldset>
           </form:form>
+
         </div>
       </div>
     </div>
