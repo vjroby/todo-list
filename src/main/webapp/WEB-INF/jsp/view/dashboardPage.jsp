@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../base.jspf" />
 </head>
 <body>
@@ -47,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<c:url value="/todos" /> ">
                         <div class="panel-footer">
                             <span class="pull-left">View Details</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

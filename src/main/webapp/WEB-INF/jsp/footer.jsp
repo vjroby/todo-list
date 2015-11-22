@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
-<%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
 <%--@elvariable id="lists" type="java.util.List"--%>
 <%--@elvariable id="configuration" type="ro.robertgabriel.frontend.Configuration"--%>
 <%

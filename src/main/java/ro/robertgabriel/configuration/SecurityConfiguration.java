@@ -44,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password")
                     .permitAll()
                 .and().logout()
-                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedUut")
+                    .logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut")
                     .invalidateHttpSession(true).deleteCookies("JESSIONID")
                     .permitAll()
 //                .and().sessionManagement()

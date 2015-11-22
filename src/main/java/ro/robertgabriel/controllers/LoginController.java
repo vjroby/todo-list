@@ -1,7 +1,6 @@
 package ro.robertgabriel.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.entities.User;
 import ro.robertgabriel.exceptions.EmailExistsException;
+import ro.robertgabriel.security.AuthenticatedUser;
 import ro.robertgabriel.security.SecurityUtils;
 import ro.robertgabriel.services.UserDetailsService;
 
@@ -28,13 +28,18 @@ public class LoginController extends BaseController{
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
-                                  @RequestParam(value = "logout", required = false) String logout, @AuthenticationPrincipal UserDetailsService user) {
+                                  @RequestParam(value = "loggedOut", required = false) String logout) {
 
         ModelAndView model = new ModelAndView("loginPage");
 
-        org.springframework.security.core.userdetails.User authUser = SecurityUtils.getActiveAuthenticatedUser();
+        AuthenticatedUser authUser = null;
+        try {
+            authUser = (AuthenticatedUser) SecurityUtils.getActiveAuthenticatedUser();
+        } catch (Exception e){
+            System.out.print(e);
+        }
 
-        if (authUser != null){
+        if (authUser != null && logout == null){
             return new ModelAndView("redirect:/dashboard");
         }
         if (error != null) {
@@ -98,4 +103,5 @@ public class LoginController extends BaseController{
     public ModelAndView welcomePage(){
         return new ModelAndView("welcomePage");
     }
+
 }

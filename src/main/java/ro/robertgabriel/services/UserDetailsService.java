@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import ro.robertgabriel.entities.User;
 import ro.robertgabriel.exceptions.EmailExistsException;
 import ro.robertgabriel.repositories.UserRepository;
+import ro.robertgabriel.security.AuthenticatedUser;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,8 +44,11 @@ public class UserDetailsService implements org.springframework.security.core.use
             List<GrantedAuthority> auth = AuthorityUtils
                     .commaSeparatedStringToAuthorityList("ROLE_USER");
             User user = userList.get(0);
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+            AuthenticatedUser authenticatedUser = new AuthenticatedUser(user.getEmail(), user.getPassword(),
                     true, true, true, true, auth);
+            authenticatedUser.setFirstName(user.getFirstName());
+            authenticatedUser.setLastName(user.getLastName());
+            return  authenticatedUser;
         }else{
             throw  new UsernameNotFoundException("User not found");
         }

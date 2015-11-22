@@ -8,10 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import ro.robertgabriel.controllers.DashboardController;
-import ro.robertgabriel.controllers.HomeController;
-import ro.robertgabriel.controllers.ListsController;
-import ro.robertgabriel.controllers.LoginController;
+import ro.robertgabriel.controllers.*;
 import ro.robertgabriel.dao.MongoDBItemsDao;
 import ro.robertgabriel.dao.MongoDBListDao;
 
@@ -56,6 +53,9 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
 
     @Bean
     public DashboardController dashboardController() { return  new DashboardController(); }
+
+    @Bean
+    public TodosController todosController() { return new TodosController(); }
 
     @Bean
     public ViewResolver viewResolver()
