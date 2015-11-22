@@ -1,3 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:include page="../base.jspf" />
+</head>
+<body
 <%@ page session="true" %>
 <fmt:setBundle basename="messages"/>
 <fmt:message key="message.password" var="noPass"/>

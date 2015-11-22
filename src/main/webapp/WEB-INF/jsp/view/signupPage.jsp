@@ -1,5 +1,9 @@
+<jsp:include page="../base.jspf" />
+</head>
+<body
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false"%>
 <div class="container">
   <div class="row">
@@ -33,7 +37,7 @@
 
               <!-- Change this to a button or input when using this as a form -->
               <input type="submit" value="SignUp" class="btn btn-primary btn-block"/>
-              <a href="<c:url value="/login" />" class="btn btn-info btn-block">
+              <a href="<c:url value='/login' />" class="btn btn-info btn-block">
                 Login
               </a>
             </fieldset>

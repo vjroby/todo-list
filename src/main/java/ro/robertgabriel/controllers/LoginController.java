@@ -1,43 +1,42 @@
 package ro.robertgabriel.controllers;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.entities.User;
 import ro.robertgabriel.exceptions.EmailExistsException;
+import ro.robertgabriel.security.SecurityUtils;
 import ro.robertgabriel.services.UserDetailsService;
 
 import javax.validation.Valid;
 
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
-    @InitBinder     /* Converts empty strings into null when a form is submitted */
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-    }
     @Autowired
     private UserDetailsService userDetailsService;
 
-    private static final Logger log = LogManager.getLogger();
-
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
-                                  @RequestParam(value = "logout", required = false) String logout) {
-
+                                  @RequestParam(value = "logout", required = false) String logout, @AuthenticationPrincipal UserDetailsService user) {
 
         ModelAndView model = new ModelAndView("loginPage");
 
+        org.springframework.security.core.userdetails.User authUser = SecurityUtils.getActiveAuthenticatedUser();
+
+        if (authUser != null){
+            return new ModelAndView("redirect:/dashboard");
+        }
         if (error != null) {
             model.addObject("error", "Invalid Credentials provided.");
         }

@@ -30,12 +30,13 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+//    @Autowired
+//    private RoleRepository roleRepository;
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        String password = "password";
-//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String hashedPassword = passwordEncoder.encode(password);
+
         System.out.println("Getting access details from employee dao !!");
         List<User> userList = userRepository.findByEmail(email);
         if (userList.size() != 0){

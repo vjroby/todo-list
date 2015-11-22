@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import ro.robertgabriel.controllers.DashboardController;
 import ro.robertgabriel.controllers.HomeController;
 import ro.robertgabriel.controllers.ListsController;
 import ro.robertgabriel.controllers.LoginController;
@@ -52,6 +53,9 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
     {
         return new LoginController();
     }
+
+    @Bean
+    public DashboardController dashboardController() { return  new DashboardController(); }
 
     @Bean
     public ViewResolver viewResolver()

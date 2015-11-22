@@ -3,6 +3,8 @@
 <%@ page import="ro.robertgabriel.model.ListModel" %>
 <%@ page import="ro.robertgabriel.frontend.FrontEndConfiguration" %>
 <%@ page import="ro.robertgabriel.frontend.MenuItem" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%--@elvariable id="lists" type="java.util.List"--%>
 <%--@elvariable id="configuration" type="ro.robertgabriel.frontend.Configuration"--%>
 <%
@@ -11,7 +13,10 @@
     String appName = frontEndConfiguration.getAppName();
     String subTitle = frontEndConfiguration.getAppSubtitle();
 %>
-
+<jsp:include page="base.jspf" />
+<!-- Custom CSS -->
+<link href="resources/css/stylish-portfolio.css" rel="stylesheet">
+</head>
 <body>
 
 <!-- Navigation -->
