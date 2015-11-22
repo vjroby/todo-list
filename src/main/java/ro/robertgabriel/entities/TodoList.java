@@ -1,11 +1,14 @@
 package ro.robertgabriel.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Basic;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Document
@@ -14,11 +17,16 @@ public class TodoList implements Serializable{
 
     private String id;
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String description;
 
     private List<Item> items;
+
+    @DateTimeFormat
+    private Date created;
 
     @Id
     public String getId() {
