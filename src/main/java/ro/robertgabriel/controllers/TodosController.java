@@ -31,6 +31,7 @@ public class TodosController extends BaseController {
     public ModelAndView createForm() {
         ModelAndView modelAndView = new ModelAndView("todosCreatePage");
         modelAndView.addObject("user", getAuthenticatedUser());
+        modelAndView.addObject("todolist", new TodoList());
         return  modelAndView;
     }
 
@@ -40,6 +41,10 @@ public class TodosController extends BaseController {
             BindingResult result, WebRequest request, Errors errors
     ){
         ModelAndView modelAndView = new ModelAndView("/todo/create");
+
+        if(result.hasErrors()){
+           return modelAndView;
+        }
         todoListRepository.save(todoList);
         return  modelAndView;
     }
