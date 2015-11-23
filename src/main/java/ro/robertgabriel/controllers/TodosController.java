@@ -15,19 +15,20 @@ import ro.robertgabriel.repositories.TodoListRepository;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/todos")
 public class TodosController extends BaseController {
 
     @Autowired
     private TodoListRepository todoListRepository;
 
-    @RequestMapping(value = {"/todos"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView getAllTodos() {
         ModelAndView modelAndView = new ModelAndView("todosPage");
         modelAndView.addObject("user", getAuthenticatedUser());
         return  modelAndView;
     }
 
-    @RequestMapping(value = {"/todos/create"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public ModelAndView createForm() {
         ModelAndView modelAndView = new ModelAndView("todosCreatePage");
         modelAndView.addObject("user", getAuthenticatedUser());
@@ -35,7 +36,7 @@ public class TodosController extends BaseController {
         return  modelAndView;
     }
 
-    @RequestMapping(value = {"/todos/create"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/create"}, method = RequestMethod.POST)
     public ModelAndView createTodoList(
             @ModelAttribute("todolist") @Valid TodoList todoList,
             BindingResult result, WebRequest request, Errors errors
