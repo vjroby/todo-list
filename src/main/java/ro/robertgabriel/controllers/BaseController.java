@@ -3,9 +3,9 @@ package ro.robertgabriel.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import ro.robertgabriel.security.AuthenticatedUser;
 import ro.robertgabriel.security.SecurityUtils;
 
 public class BaseController {
@@ -17,7 +17,7 @@ public class BaseController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
-    protected User getAuthenticatedUser() {
-        return SecurityUtils.getActiveAuthenticatedUser();
+    protected AuthenticatedUser getAuthenticatedUser() {
+        return  (AuthenticatedUser) SecurityUtils.getActiveAuthenticatedUser();
     }
 }

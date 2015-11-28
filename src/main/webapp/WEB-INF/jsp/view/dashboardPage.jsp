@@ -2,8 +2,8 @@
 <jsp:include page="../base.jspf" />
 </head>
 <body>
-<jsp:include page="modules\navigationDashboard.jsp" />
 <div id="wrapper">
+    <jsp:include page="modules\navigationDashboard.jsp" />
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">

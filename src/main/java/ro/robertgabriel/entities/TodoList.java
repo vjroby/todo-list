@@ -28,6 +28,11 @@ public class TodoList implements Serializable{
     @DateTimeFormat
     private Date created;
 
+    @DateTimeFormat
+    private Date updated = null;
+
+    private String userId;
+
     @Id
     public String getId() {
         return id;
@@ -61,5 +66,21 @@ public class TodoList implements Serializable{
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

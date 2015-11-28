@@ -7,6 +7,19 @@ import java.util.Collection;
 
 public class AuthenticatedUser extends User {
 
+
+    protected String firstName;
+    protected String lastName;
+    protected String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -22,9 +35,6 @@ public class AuthenticatedUser extends User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    protected String firstName;
-    protected String lastName;
 
     public AuthenticatedUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
