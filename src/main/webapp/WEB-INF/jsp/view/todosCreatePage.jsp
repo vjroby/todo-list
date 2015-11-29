@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2">
                                 <form:form role="form" method="post" modelAttribute="todolist" enctype="utf8">
-                                    form
+                                    <form:hidden path="id" />
                                     <div class="form-group">
                                         <label for="title">Title:</label>
                                         <form:input class="form-control" name="title" id="title" path="title" />

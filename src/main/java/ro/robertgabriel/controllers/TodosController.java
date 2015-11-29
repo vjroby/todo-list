@@ -72,7 +72,6 @@ public class TodosController extends BaseController {
     public ModelAndView updateTodoList(
             @ModelAttribute("todolist") @Valid TodoList todoList) {
         TodoList todoListIterable = todoListRepository.save(todoList);
-
         ModelAndView modelAndView = new ModelAndView("redirect:/todos/view/" + todoList.getId());
         modelAndView.addObject("user", getAuthenticatedUser());
         return  modelAndView;
