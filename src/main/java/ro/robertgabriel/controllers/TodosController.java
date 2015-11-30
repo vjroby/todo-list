@@ -84,6 +84,8 @@ public class TodosController extends BaseController {
     @RequestMapping(value = {"view/{discussionId}"}, method = RequestMethod.POST)
     public ModelAndView updateTodoList(
             @ModelAttribute("todolist") @Valid TodoList todoList) {
+        AuthenticatedUser user = getAuthenticatedUser();
+        todoList.setUserId(user.getId());
         todoListService.save(todoList);
         ModelAndView modelAndView = new ModelAndView("redirect:/todos/view/" + todoList.getId());
         modelAndView.addObject("user", getAuthenticatedUser());
