@@ -30,7 +30,7 @@
                                     <th>Descri[tion</th>
                                     <th>User</th>
                                     <th>Create At</th>
-                                    <th>Editt</th>
+                                    <th>Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>

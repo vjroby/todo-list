@@ -10,6 +10,7 @@ import org.springframework.core.Ordered;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -88,4 +89,22 @@ public class RootContextConfiguration {
         return messageSource;
     }
 
+    @Bean
+    public ThreadPoolTaskScheduler taskScheduler() {
+        log.info("Setting up thread pooltask scheduler with 20 threads");
+
+        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+        scheduler.setPoolSize(20);
+        scheduler.setThreadNamePrefix("task-");
+        scheduler.setAwaitTerminationSeconds(60);
+        scheduler.setErrorHandler(t -> schedulingLogger.error(
+                "Unknown error occured while executing task.",t
+        ));
+        scheduler.setRejectedExecutionHandler(
+                (r, e) -> schedulingLogger.error(
+                        "Execution of task {} was rejected for unknown reasons.",r
+                )
+        );
+        return scheduler;
+    }
 }
