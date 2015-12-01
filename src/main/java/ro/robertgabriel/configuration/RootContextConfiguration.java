@@ -3,14 +3,19 @@ package ro.robertgabriel.configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.validator.HibernateValidator;
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -22,6 +27,7 @@ import ro.robertgabriel.dao.MongoDBListDao;
 import ro.robertgabriel.frontend.FrontEndConfiguration;
 
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 @Configuration
 @EnableScheduling
@@ -43,7 +49,7 @@ import java.util.Locale;
         basePackages = "ro.robertgabriel.repositories"
 )
 @Import({SecurityConfiguration.class})
-public class RootContextConfiguration {
+public class RootContextConfiguration implements AsyncConfigurer, SchedulingConfigurer{
 
     private static final Logger log = LogManager.getLogger();
     private static final Logger schedulingLogger =
@@ -106,5 +112,24 @@ public class RootContextConfiguration {
                 )
         );
         return scheduler;
+    }
+
+    @Override
+    public Executor getAsyncExecutor() {
+        Executor executor = this.taskScheduler();
+        log.info("Configuring asyncronous method executor {}.", executor);
+        return executor;
+    }
+
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return null;
+    }
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+        TaskScheduler scheduler = this.taskScheduler();
+        log.info("Configuring scheduled method exceturo {}.", scheduler);
+        scheduledTaskRegistrar.setTaskScheduler(scheduler);
     }
 }
