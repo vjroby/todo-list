@@ -18,6 +18,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.util.ErrorHandler;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.LocaleResolver;
@@ -28,6 +29,8 @@ import ro.robertgabriel.frontend.FrontEndConfiguration;
 
 import java.util.Locale;
 import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Configuration
 @EnableScheduling
@@ -103,14 +106,8 @@ public class RootContextConfiguration implements AsyncConfigurer, SchedulingConf
         scheduler.setPoolSize(20);
         scheduler.setThreadNamePrefix("task-");
         scheduler.setAwaitTerminationSeconds(60);
-        scheduler.setErrorHandler(t -> schedulingLogger.error(
-                "Unknown error occured while executing task.",t
-        ));
-        scheduler.setRejectedExecutionHandler(
-                (r, e) -> schedulingLogger.error(
-                        "Execution of task {} was rejected for unknown reasons.",r
-                )
-        );
+        scheduler.setErrorHandler(this.errorHandler());
+        scheduler.setRejectedExecutionHandler(this.rejectedExecutionHandler());
         return scheduler;
     }
 
@@ -131,5 +128,29 @@ public class RootContextConfiguration implements AsyncConfigurer, SchedulingConf
         TaskScheduler scheduler = this.taskScheduler();
         log.info("Configuring scheduled method exceturo {}.", scheduler);
         scheduledTaskRegistrar.setTaskScheduler(scheduler);
+    }
+
+    private RejectedExecutionHandler rejectedExecutionHandler() {
+        return new RejectedExecutionHandler() {
+            private Logger schedulingLogger =  LogManager.getLogger(log.getName() + ".[scheduling]");
+
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                schedulingLogger.error(
+                        "Execution of task {} was rejected for unknown reasons.",r
+                );
+            }
+        };
+    }
+
+    private ErrorHandler errorHandler(){
+        return new ErrorHandler() {
+            private Logger schedulingLogger =  LogManager.getLogger(log.getName() + ".[scheduling]");
+
+            @Override
+            public void handleError(Throwable t) {
+                schedulingLogger.error("Unknown error occurred while executing task.", t);
+            }
+        };
     }
 }
