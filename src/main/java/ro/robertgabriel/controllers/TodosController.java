@@ -64,7 +64,7 @@ public class TodosController extends BaseController {
     @RequestMapping(value = {"view/{discussionId}"}, method = RequestMethod.GET)
     public ModelAndView viewTodoList(
             @PathVariable("discussionId") String listId) {
-
+        log.info("Viewing todo with id:" + listId);
         AuthenticatedUser user = getAuthenticatedUser();
         try {
             TodoList todoListIterable = todoListService.findOneByIdAndUserId(listId, user.getId());

@@ -17,11 +17,15 @@
         </RollingFile>
     </appenders>
     <loggers>
-        <root level="warn">
+        <root level="debug">
             <appender-ref ref="Console" />
             <appender-ref ref="WroxFileAppender" />
         </root>
-        <logger name="com.wrox" level="info" />
+        <root level="debug">
+            <appender-ref ref="Console" />
+            <appender-ref ref="WroxFileAppender" />
+        </root>
+        <logger name="ro.robertgabriel" level="debug" />
         <logger name="org.apache" level="info" />
         <logger name="org.hibernate" level="info" />
         <logger name="org.springframework" level="info" />

@@ -6,6 +6,13 @@
     <packaging>war</packaging>
     <version>1.0</version>
     <name>todo</name>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
     <repositories>
         <repository>
             <id>eap</id>
