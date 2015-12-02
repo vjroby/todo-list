@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.security.AuthenticatedUser;
 import ro.robertgabriel.security.SecurityUtils;
 
@@ -19,5 +20,11 @@ public class BaseController {
 
     protected AuthenticatedUser getAuthenticatedUser() {
         return  (AuthenticatedUser) SecurityUtils.getActiveAuthenticatedUser();
+    }
+
+    protected ModelAndView getModelAndViewNotFound(AuthenticatedUser user, String notFoundPage) {
+        ModelAndView modelAndView = new ModelAndView(notFoundPage);
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 }

@@ -58,6 +58,9 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter{
     public TodosController todosController() { return new TodosController(); }
 
     @Bean
+    public ItemsController itemsController() { return  new ItemsController(); }
+
+    @Bean
     public ViewResolver viewResolver()
     {
         InternalResourceViewResolver resolver =

@@ -9,7 +9,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Create a new To Do list</h1>
+                <h1 class="page-header">Add an item to the listt</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -23,7 +23,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2">
-                                <form:form role="form" method="post" modelAttribute="todolist" enctype="utf8">
+                                <form:form role="form" method="post" modelAttribute="item" enctype="utf8">
                                     <form:hidden path="id" />
                                     <div class="form-group">
                                         <label for="title">Title:</label>
@@ -44,15 +44,6 @@
                                 </form:form>
                             </div>
                         </div>
-                        <c:if test="${todolist.id!= null}" >
-                        <div class="row">
-                            <div class="col-lg-8 col-lg-offset-2">
-                                <a href="<c:url value="/todos/${todolist.id}/items/create" /> " class="btn btn-info">
-                                    Add Item
-                                </a>
-                            </div>
-                        </div>
-                        </c:if>
                     </div>
                 </div>
             </div>

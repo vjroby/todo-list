@@ -23,7 +23,7 @@ import java.util.Date;
 public class TodosController extends BaseController {
 
     @Inject
-    TodoListService todoListService;
+    private TodoListService todoListService;
 
     @RequestMapping(value = {""}, method = RequestMethod.GET)
     public ModelAndView getAllTodos() {
@@ -75,9 +75,7 @@ public class TodosController extends BaseController {
             return modelAndView;
 
         }catch (EntityNotFoundException e){
-            ModelAndView modelAndView = new ModelAndView("notFoundPage");
-            modelAndView.addObject("user", user);
-            return modelAndView;
+            return getModelAndViewNotFound(user, "notFoundPage");
         }
     }
 
