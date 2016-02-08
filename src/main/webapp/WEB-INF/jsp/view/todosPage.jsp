@@ -25,9 +25,8 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Title</th>
-                                    <th>Descri[tion</th>
+                                    <th>Description</th>
                                     <th>User</th>
                                     <th>Create At</th>
                                     <th>Edit</th>
@@ -36,10 +35,9 @@
                                 <tbody>
                                 <c:forEach items="${todolists}" var="todolist">
                                     <tr class="odd gradeX">
-                                        <td>${todolist.id}</td>
                                         <td>${todolist.title}</td>
                                         <td>${todolist.description}</td>
-                                        <td>${todolist.userId}</td>
+                                        <td>${todolist.user.firstName}&NonBreakingSpace; ${todolist.user.lastName}</td>
                                         <td>${todolist.created}</td>
                                         <td><a href="<c:url value="/todos/view/${todolist.id}" /> " class="btn btn-primary">View</a></td>
                                     </tr>

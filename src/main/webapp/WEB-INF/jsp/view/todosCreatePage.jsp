@@ -24,17 +24,18 @@
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2">
                                 <form:form role="form" method="post" modelAttribute="todolist" enctype="utf8">
-                                    <form:hidden path="id" />
+                                    <form:hidden path="id"/>
                                     <div class="form-group">
                                         <label for="title">Title:</label>
-                                        <form:input class="form-control" name="title" id="title" path="title" />
+                                        <form:input class="form-control" name="title" id="title" path="title"/>
 
                                         <p class="help-block">The title of the to do list.</p>
                                         <form:errors path="title" cssStyle="color: #ff0000;"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description:</label>
-                                        <form:textarea class="form-control" name="description" id="description" path="description"></form:textarea>
+                                        <form:textarea class="form-control" name="description" id="description"
+                                                       path="description"></form:textarea>
                                         <p class="help-block">The description of the to do list.</p>
                                         <form:errors path="description" cssStyle="color: #ff0000;"/>
 
@@ -44,14 +45,46 @@
                                 </form:form>
                             </div>
                         </div>
-                        <c:if test="${todolist.id!= null}" >
-                        <div class="row">
-                            <div class="col-lg-8 col-lg-offset-2">
-                                <a href="<c:url value="/todos/${todolist.id}/items/create" /> " class="btn btn-info">
-                                    Add Item
-                                </a>
+                        <c:if test="${todolist.id!= null}">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <a href="<c:url value="/todos/${todolist.id}/items/create" /> "
+                                       class="btn btn-info">
+                                        Add Item
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+
+                            <c:if test="${todolist.items.size() != 0}">
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="dataTable_wrapper">
+                                        <table class="table table-striped table-bordered table-hover"
+                                               id="dataTables-example">
+                                            <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Create At</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${todolist.items}" var="item">
+                                                <tr class="odd gradeX">
+                                                    <td>${item.title}</td>
+                                                    <td>${item.description}</td>
+                                                    <td>${item.created}</td>
+                                                    <td>
+                                                        <a href="<c:url value="/todos/${todolist.id}/items/view/${item.id}" /> "
+                                                           class="btn btn-primary">View</a></td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </c:if>
                         </c:if>
                     </div>
                 </div>

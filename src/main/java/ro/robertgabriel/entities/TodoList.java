@@ -33,6 +33,16 @@ public class TodoList implements Serializable{
 
     private String userId;
 
+    private User user;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     @Id
     public String getId() {
         return id;
@@ -83,4 +93,6 @@ public class TodoList implements Serializable{
     public void setCreated(Date created) {
         this.created = created;
     }
+
+
 }

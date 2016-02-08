@@ -5,7 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import ro.robertgabriel.entities.TodoList;
 import ro.robertgabriel.exceptions.EntityNotFoundException;
+import ro.robertgabriel.repositories.ItemRepository;
 import ro.robertgabriel.repositories.TodoListRepository;
+import ro.robertgabriel.repositories.UserRepository;
 
 import javax.inject.Inject;
 
@@ -16,6 +18,10 @@ public class DefaultTodoListService implements TodoListService {
 
     @Inject
     TodoListRepository todoListRepository;
+    @Inject
+    UserRepository userRepository;
+    @Inject
+    ItemRepository itemRepository;
 
     @Override
     public Iterable<TodoList> getAllLists() {
@@ -24,7 +30,12 @@ public class DefaultTodoListService implements TodoListService {
 
     @Override
     public Iterable<TodoList> getListsByUserId(String userId) {
-        return todoListRepository.findByUserId(userId);
+        Iterable<TodoList> todoListIterable = todoListRepository.findByUserId(userId);
+        for (TodoList todo: todoListIterable
+             ) {
+            todo.setUser(userRepository.findOne(todo.getUserId()));
+        }
+        return todoListIterable;
     }
 
     @Override
@@ -47,6 +58,7 @@ public class DefaultTodoListService implements TodoListService {
         if (todoList == null){
             throw new EntityNotFoundException();
         }
+        todoList.setItems(itemRepository.findByListId(todoList.getId()));
         return todoList;
     }
 }
