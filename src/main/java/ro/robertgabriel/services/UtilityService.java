@@ -12,8 +12,6 @@ import ro.robertgabriel.repositories.ItemRepository;
 import ro.robertgabriel.repositories.TodoListRepository;
 import ro.robertgabriel.repositories.UserRepository;
 
-import java.time.Instant;
-
 @Component
 public class UtilityService {
 
@@ -47,10 +45,8 @@ public class UtilityService {
 //        todoListLists.forEach(list ->{
 //            itemRepository.deleteByListId(list.getId());
 //        });
-
         todoListRepository.delete(todoListLists);
-
-        log.info("Method ran!"+ Instant.now());
+        log.info("Method ran!"+ System.currentTimeMillis());
     }
 
     public String getTestUserId(){
