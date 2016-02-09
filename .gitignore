@@ -30,4 +30,3 @@ jboss/server/minimal/work/**/*
 .settings/
 out/
 target
-todo.iml
