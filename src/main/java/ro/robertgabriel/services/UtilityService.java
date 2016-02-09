@@ -39,9 +39,14 @@ public class UtilityService {
     public void deleteTestUserData(){
         Iterable<TodoList> todoListLists = todoListRepository.findByUserId(getTestUserId());
 
-        todoListLists.forEach(list ->{
-            itemRepository.deleteByListId(list.getId());
-        });
+        for (TodoList todoList:
+                todoListLists
+             ) {
+            itemRepository.deleteByListId(todoList.getId());
+        }
+//        todoListLists.forEach(list ->{
+//            itemRepository.deleteByListId(list.getId());
+//        });
 
         todoListRepository.delete(todoListLists);
 
