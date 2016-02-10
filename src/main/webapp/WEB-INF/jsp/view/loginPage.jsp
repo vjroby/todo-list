@@ -35,7 +35,7 @@
                             <!-- Change this to a button or input when using this as a form -->
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
                             <a href="/signup" class="btn btn-block btn-primary">Sign Up</a>
-                            <a href="#" id="test-user" class="btn btn-block btn-primary">Try the test user!p</a>
+                            <a href="#" id="test-user" class="btn btn-block btn-info">Try the test user!</a>
                         </fieldset>
                     </form>
 
