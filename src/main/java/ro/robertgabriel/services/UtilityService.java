@@ -33,7 +33,7 @@ public class UtilityService {
     private String userId = null;
 
 
-    @Scheduled(cron = "* 23 * * * *")
+    @Scheduled(cron = "* * 1 * * *")
     public void deleteTestUserData(){
         Iterable<TodoList> todoListLists = todoListRepository.findByUserId(getTestUserId());
 
