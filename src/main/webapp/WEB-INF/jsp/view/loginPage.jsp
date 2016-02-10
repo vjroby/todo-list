@@ -56,6 +56,12 @@
 </div>
 
 <script type="text/javascript">
+    $("#test-user").on('click',function(e){
+        e.preventDefault();
+
+        $("input[name='username']").val('test@todo.com');
+        $("input[name='password']").val('test');
+    });
     $(document).ready(function () {
         $("input[name='username'], input[name='password']").on('change', function () {
             $('div.alert').remove();
@@ -65,6 +71,6 @@
 
             $("input[name='username']").val('test@todo.com');
             $("input[name='password']").val('test');
-        })
+        });
     });
 </script>
