@@ -35,6 +35,7 @@
                             <!-- Change this to a button or input when using this as a form -->
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
                             <a href="/signup" class="btn btn-block btn-primary">Sign Up</a>
+                            <a href="#" id="test-user" class="btn btn-block btn-primary">Try the test user!p</a>
                         </fieldset>
                     </form>
 
@@ -59,5 +60,11 @@
         $("input[name='username'], input[name='password']").on('change', function () {
             $('div.alert').remove();
         });
+        $("#test-user").on('click',function(e){
+            e.preventDefault();
+
+            $("input[name='username']").val('test@todo.com');
+            $("input[name='password']").val('test');
+        })
     });
 </script>
