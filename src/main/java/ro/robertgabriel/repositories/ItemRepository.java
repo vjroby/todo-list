@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends MyBaseRepository<Item, String> {
     List<Item> findByListId(String listId);
+
+    void deleteByListId(String listId);
 }
