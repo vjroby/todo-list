@@ -6,6 +6,7 @@ import ro.robertgabriel.exceptions.EntityNotFoundException;
 import ro.robertgabriel.repositories.ItemRepository;
 
 import javax.inject.Inject;
+import java.util.Date;
 
 @Service
 public class DefaultItemsService implements ItemsService{
@@ -15,6 +16,13 @@ public class DefaultItemsService implements ItemsService{
 
     @Override
     public void save(Item item) {
+        Item itemFromDB = null == item.getId() ? null : itemRepository.findOne(item.getId());
+        if(null != itemFromDB){
+            itemFromDB.setDescription(item.getDescription());
+            itemFromDB.setTitle(item.getDescription());
+            itemFromDB.setUpdated(new Date());
+            item = itemFromDB;
+        }
         itemRepository.save(item);
     }
 

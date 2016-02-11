@@ -28,7 +28,8 @@
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>User</th>
-                                    <th>Create At</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
                                     <th>Edit</th>
                                 </tr>
                                 </thead>
@@ -39,6 +40,7 @@
                                         <td>${todolist.description}</td>
                                         <td>${todolist.user.firstName}&NonBreakingSpace; ${todolist.user.lastName}</td>
                                         <td>${todolist.created}</td>
+                                        <td>${todolist.updated}</td>
                                         <td><a href="<c:url value="/todos/view/${todolist.id}" /> " class="btn btn-primary">View</a></td>
                                     </tr>
                                 </c:forEach>

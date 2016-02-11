@@ -65,7 +65,8 @@
                                             <tr>
                                                 <th>Title</th>
                                                 <th>Description</th>
-                                                <th>Create At</th>
+                                                <th>Created</th>
+                                                <th>Updated</th>
                                                 <th>Edit</th>
                                             </tr>
                                             </thead>
@@ -75,6 +76,7 @@
                                                     <td>${item.title}</td>
                                                     <td>${item.description}</td>
                                                     <td>${item.created}</td>
+                                                    <td>${item.updated}</td>
                                                     <td>
                                                         <a href="<c:url value="/todos/${todolist.id}/items/view/${item.id}" /> "
                                                            class="btn btn-primary">View</a></td>

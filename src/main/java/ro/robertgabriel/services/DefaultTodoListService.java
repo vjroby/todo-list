@@ -10,6 +10,7 @@ import ro.robertgabriel.repositories.TodoListRepository;
 import ro.robertgabriel.repositories.UserRepository;
 
 import javax.inject.Inject;
+import java.util.Date;
 
 @Service
 public class DefaultTodoListService implements TodoListService {
@@ -40,25 +41,35 @@ public class DefaultTodoListService implements TodoListService {
 
     @Override
     public void save(TodoList todoList) {
+        TodoList todoListFromDB = null == todoList.getId() ? null : todoListRepository.findOne(todoList.getId());
+        if(null != todoListFromDB){
+            todoListFromDB.setDescription(todoList.getDescription());
+            todoListFromDB.setTitle(todoList.getTitle());
+            todoListFromDB.setUpdated(new Date());
+            todoList = todoListFromDB;
+        }
+
         todoListRepository.save(todoList);
     }
 
     @Override
     public TodoList findOne(String listId) throws EntityNotFoundException {
         TodoList todoList =  todoListRepository.findOne(listId);
-        if (todoList == null){
-            throw new EntityNotFoundException();
-        }
+        throwExceptionIfNUll(todoList);
         return todoList;
     }
 
     @Override
     public TodoList findOneByIdAndUserId(String id, String userId) {
         TodoList todoList =  todoListRepository.findOneByIdAndUserId(id, userId);
+        throwExceptionIfNUll(todoList);
+        todoList.setItems(itemRepository.findByListId(todoList.getId()));
+        return todoList;
+    }
+
+    private void throwExceptionIfNUll(TodoList todoList){
         if (todoList == null){
             throw new EntityNotFoundException();
         }
-        todoList.setItems(itemRepository.findByListId(todoList.getId()));
-        return todoList;
     }
 }

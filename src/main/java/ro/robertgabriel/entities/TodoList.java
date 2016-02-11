@@ -95,4 +95,11 @@ public class TodoList implements Serializable{
     }
 
 
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
 }
