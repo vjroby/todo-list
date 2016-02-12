@@ -41,7 +41,7 @@
         <h1><%=appName%></h1>
         <h3><%=subTitle%></h3>
         <br>
-        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+        <a href="/login" class="btn btn-dark btn-lg">Find Out More</a>
     </div>
 </header>
 
