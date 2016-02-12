@@ -61,9 +61,9 @@ public class TodosController extends BaseController {
         return new ModelAndView("redirect:/todos/view/" + todoList.getId());
     }
 
-    @RequestMapping(value = {"view/{discussionId}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"view/{todoId}"}, method = RequestMethod.GET)
     public ModelAndView viewTodoList(
-            @PathVariable("discussionId") String listId) {
+            @PathVariable("todoId") String listId) {
         log.info("Viewing todo with id:" + listId);
         AuthenticatedUser user = getAuthenticatedUser();
         try {
@@ -79,7 +79,7 @@ public class TodosController extends BaseController {
         }
     }
 
-    @RequestMapping(value = {"view/{discussionId}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"view/{todoId}"}, method = RequestMethod.POST)
     public ModelAndView updateTodoList(
             @ModelAttribute("todolist") @Valid TodoList todoList) {
         AuthenticatedUser user = getAuthenticatedUser();

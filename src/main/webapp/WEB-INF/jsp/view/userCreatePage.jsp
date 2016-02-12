@@ -9,7 +9,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Add an item to the list</h1>
+                <h1 class="page-header">User Details</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -18,25 +18,25 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Create Form
+                        Modify your details
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2">
-                                <form:form role="form" method="post" modelAttribute="item" enctype="utf8">
+                                <form:form role="form" method="post" modelAttribute="user" enctype="utf8">
                                     <form:hidden path="id" />
                                     <div class="form-group">
-                                        <label for="title">Title:</label>
-                                        <form:input class="form-control" name="title" id="title" path="title" />
+                                        <label for="firstName">First Name:</label>
+                                        <form:input class="form-control" name="firstName" id="firstName" path="firstName" />
 
-                                        <p class="help-block">The title of the to do list.</p>
-                                        <form:errors path="title" cssStyle="color: #ff0000;"/>
+                                        <p class="help-block">Your first name.</p>
+                                        <form:errors path="firstName" cssStyle="color: #ff0000;"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Description:</label>
-                                        <form:textarea class="form-control" name="description" id="description" path="description"></form:textarea>
-                                        <p class="help-block">The description of the to do list.</p>
-                                        <form:errors path="description" cssStyle="color: #ff0000;"/>
+                                        <label for="lastName">Last Name.</label>
+                                        <form:input class="form-control" name="lastName" id="lastName" path="lastName" />
+                                        <p class="help-block">Your last name.</p>
+                                        <form:errors path="lastName" cssStyle="color: #ff0000;"/>
 
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save</button>

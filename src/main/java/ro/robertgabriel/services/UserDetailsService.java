@@ -11,15 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ro.robertgabriel.entities.User;
 import ro.robertgabriel.exceptions.EmailExistsException;
+import ro.robertgabriel.exceptions.EntityNotFoundException;
 import ro.robertgabriel.repositories.UserRepository;
 import ro.robertgabriel.security.AuthenticatedUser;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Service("userDetailsService")
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService{
@@ -74,14 +72,22 @@ public class UserDetailsService implements org.springframework.security.core.use
 
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
         user.setCreated(new Date());
         return userRepository.save(user);
     }
 
+    public User findOne(String userId) throws EntityNotFoundException{
+        User user = userRepository.findOne(userId);
+        if(null == user){
+            throw new EntityNotFoundException();
+        }
+        return user;
+    }
 
     private boolean emailExist(String email) {
         List<User> userList = userRepository.findByEmail(email);
         return userList.size() != 0;
     }
+
+
 }
