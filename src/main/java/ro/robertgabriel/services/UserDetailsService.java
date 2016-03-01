@@ -57,6 +57,7 @@ public class UserDetailsService implements org.springframework.security.core.use
             List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
+
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority(role));
         }

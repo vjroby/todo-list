@@ -2,6 +2,7 @@ package ro.robertgabriel.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +33,7 @@ public class ItemsController extends BaseController {
     private TodoListService todoListService;
 
     @RequestMapping(value = {"create"}, method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ModelAndView createForm(
             @PathVariable("listId") String listId
     ){
