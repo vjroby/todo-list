@@ -43,6 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/signup","/").permitAll()
                     .anyRequest().authenticated()
+                    .antMatchers("/admin/**").hasRole("ROLE_ADMIN")
                 .and().formLogin()
                     .loginPage("/login").failureUrl("/login?error")
                     .defaultSuccessUrl("/dashboard")

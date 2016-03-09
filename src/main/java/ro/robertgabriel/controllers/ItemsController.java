@@ -33,7 +33,6 @@ public class ItemsController extends BaseController {
     private TodoListService todoListService;
 
     @RequestMapping(value = {"create"}, method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ModelAndView createForm(
             @PathVariable("listId") String listId
     ){
