@@ -28,6 +28,12 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <c:if test="${user.isAdmin()}">
+                <li>
+                    <a href="<c:url value="/admin/access_logs" />"><i class="fa fa-bolt fa-fw"></i>Access Logs</a>
+                </li>
+            </c:if>
+
             <%--<li>--%>
                 <%--<a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>--%>
             <%--</li>--%>

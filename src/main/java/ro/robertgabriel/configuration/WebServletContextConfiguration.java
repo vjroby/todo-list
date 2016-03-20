@@ -70,6 +70,9 @@ public class WebServletContextConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Bean
+    public AdminController adminController() { return new AdminController();}
+
+    @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();

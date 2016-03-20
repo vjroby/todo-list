@@ -1,11 +1,13 @@
 package ro.robertgabriel.repositories;
 
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 import ro.robertgabriel.entities.AccessLog;
 
 import java.util.List;
 
-public interface AccessLogRepository extends MyBaseRepository<AccessLog, String> {
+@Repository
+public interface AccessLogRepository extends PagingAndSortingRepository<AccessLog, String> {
 
-
-    List<AccessLog> findAllOrderByRequestTimeDesc();
+    List<AccessLog> findAll();
 }

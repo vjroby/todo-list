@@ -37,6 +37,8 @@ public class User {
     @DateTimeFormat
     private Date created;
 
+    private String role = "USER";
+
     public User() {
         super();
         this.enabled = false;
@@ -99,6 +101,17 @@ public class User {
         this.tokenExpired = tokenExpired;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public boolean isAdmin(){
+        return role.equals("ADMIN");
+    }
+
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -120,7 +133,12 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
+        builder.append("User [firstName=")
+                .append(firstName).append("]")
+                .append("[lastName=").append(lastName).append("]")
+                .append("[username").append(email)
+                .append("role").append(role)
+                .append("]");
         return builder.toString();
     }
 

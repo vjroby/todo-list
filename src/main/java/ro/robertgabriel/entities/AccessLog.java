@@ -1,51 +1,37 @@
 package ro.robertgabriel.entities;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+@Document(collection = "access_logs")
 public class AccessLog {
-
-    public static final String CREATED_FORMAT = "yyyy-MM-dd hh:mm:ss";
-
-    private String Ip;
-
-    private Date created;
-
+    @Id
+    private String id;
+    private String created;
+    @Field("url_path")
     private String urlPath;
-
-    private String userAgent;
-
+    @Field("request_time")
     private String requestTime;
+    @Field("user_agent")
+    private String userAgent;
+    private String ip;
 
-    public String getIp() {
-        return Ip;
+    @Id
+    public String getId() {
+        return id;
     }
 
-    public void setIp(String ip) {
-        Ip = ip;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
-    }
-
-    public String getCreatedString() {
-        SimpleDateFormat ft = new SimpleDateFormat(CREATED_FORMAT);
-        return ft.format(this.created);
-    }
-
-    public void setCreatedFromString(String dateString) {
-        SimpleDateFormat ft = new SimpleDateFormat(CREATED_FORMAT);
-        try {
-            this.created = ft.parse(dateString);
-        }catch (ParseException e){
-            System.out.println("Unparseable using " + ft);
-        }
     }
 
     public String getUrlPath() {
@@ -56,6 +42,14 @@ public class AccessLog {
         this.urlPath = urlPath;
     }
 
+    public String getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(String requestTime) {
+        this.requestTime = requestTime;
+    }
+
     public String getUserAgent() {
         return userAgent;
     }
@@ -64,11 +58,11 @@ public class AccessLog {
         this.userAgent = userAgent;
     }
 
-    public String getRequestTime() {
-        return requestTime;
+    public String getIp() {
+        return ip;
     }
 
-    public void setRequestTime(String requestTime) {
-        this.requestTime = requestTime;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

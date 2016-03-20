@@ -1,14 +1,10 @@
 package ro.robertgabriel.filters;
 
 import org.apache.commons.lang.time.StopWatch;
-import ro.robertgabriel.dao.MongoDBAccessLogDao;
-import ro.robertgabriel.model.AccessLogModel;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 public class LoggingRequestFilter implements Filter {
 
@@ -24,25 +20,25 @@ public class LoggingRequestFilter implements Filter {
 
         StopWatch timer = new StopWatch();
 
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        AccessLogModel accessLogModel = new AccessLogModel();
-        accessLogModel.setCreated(new Date());
-        accessLogModel.setIp(resolveIp(req));
-        accessLogModel.setUrlPath(req.getRequestURI());
-        accessLogModel.setUserAgent(req.getHeader("User-Agent"));
-        MongoDBAccessLogDao mongoDBAccessLogDao = new MongoDBAccessLogDao();
-
-        try{
-            timer.start();
-            chain.doFilter(request, response);
-        } finally {
-            timer.stop();
-            accessLogModel.setRequestTime(timer.toString());
-            mongoDBAccessLogDao.createAccessLog(accessLogModel);
-
-        }
-
+//        HttpServletRequest req = (HttpServletRequest) request;
+//        HttpServletResponse res = (HttpServletResponse) response;
+//        AccessLogModel accessLogModel = new AccessLogModel();
+//        accessLogModel.setCreated(new Date());
+//        accessLogModel.setIp(resolveIp(req));
+//        accessLogModel.setUrlPath(req.getRequestURI());
+//        accessLogModel.setUserAgent(req.getHeader("User-Agent"));
+//        MongoDBAccessLogDao mongoDBAccessLogDao = new MongoDBAccessLogDao();
+//
+//        try{
+//            timer.start();
+//            chain.doFilter(request, response);
+//        } finally {
+//            timer.stop();
+//            accessLogModel.setRequestTime(timer.toString());
+//            mongoDBAccessLogDao.createAccessLog(accessLogModel);
+//
+//        }
+        chain.doFilter(request, response);
     }
 
     @Override

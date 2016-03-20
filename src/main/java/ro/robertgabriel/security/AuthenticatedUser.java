@@ -11,6 +11,7 @@ public class AuthenticatedUser extends User {
     protected String firstName;
     protected String lastName;
     protected String id;
+    protected String role;
 
     public String getId() {
         return id;
@@ -42,5 +43,12 @@ public class AuthenticatedUser extends User {
 
     public AuthenticatedUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public boolean isAdmin(){
+        return role.equals("admin");
     }
 }

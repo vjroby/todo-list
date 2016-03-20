@@ -12,6 +12,7 @@ import ro.robertgabriel.security.SecurityUtils;
 public class BaseController {
 
     protected static final Logger log = LogManager.getLogger();
+    protected final int itemsPerPage = 20;
 
     @InitBinder     /* Converts empty strings into null when a form is submitted */
     public void initBinder(WebDataBinder binder) {

@@ -47,6 +47,7 @@ public class UserDetailsService implements org.springframework.security.core.use
             authenticatedUser.setFirstName(user.getFirstName());
             authenticatedUser.setLastName(user.getLastName());
             authenticatedUser.setId(user.getId());
+            authenticatedUser.setRole(user.getRole());
             return  authenticatedUser;
         }else{
             throw  new UsernameNotFoundException("User not found");
