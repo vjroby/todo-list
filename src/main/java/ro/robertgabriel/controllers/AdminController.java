@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.entities.AccessLog;
 import ro.robertgabriel.services.DefaultAccessLogService;
 
-import java.util.Optional;
 
 @Controller
 public class AdminController extends BaseController {
@@ -21,7 +20,7 @@ public class AdminController extends BaseController {
     public DefaultAccessLogService defaultAccessLogService;
 
     @RequestMapping(value = {"/admin/access_logs", "/admin/access_log/{page}"}, method = RequestMethod.GET)
-    public ModelAndView getAccessLogs(@RequestParam Optional<Integer> page) {
+    public ModelAndView getAccessLogs(@RequestParam(defaultValue = "0") Integer page) {
         ModelAndView modelAndView = new ModelAndView("accessLogsPage");
         modelAndView.addObject("user", getAuthenticatedUser());
         Page<AccessLog> logs =  defaultAccessLogService.getPaginated(managePageAndSort(page));
@@ -30,8 +29,8 @@ public class AdminController extends BaseController {
         return modelAndView;
     }
 
-    private PageRequest managePageAndSort(Optional<Integer> page) {
-        int pageInt = page.isPresent() ? (int) page.get() : 0;
+    private PageRequest managePageAndSort(Integer page) {
+        int pageInt = page;
         Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "created"));
         return new PageRequest(pageInt, itemsPerPage, sort);
     }
