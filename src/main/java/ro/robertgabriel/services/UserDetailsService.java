@@ -40,7 +40,7 @@ public class UserDetailsService implements org.springframework.security.core.use
         List<User> userList = userRepository.findByEmail(email);
         if (userList.size() != 0){
             List<GrantedAuthority> auth = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("ROLE_USER");
+                    .commaSeparatedStringToAuthorityList("ROLE_ADMIN");
             User user = userList.get(0);
             AuthenticatedUser authenticatedUser = new AuthenticatedUser(user.getEmail(), user.getPassword(),
                     true, true, true, true, auth);
