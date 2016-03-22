@@ -41,9 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security) throws Exception {
         security
                 .authorizeRequests()
+                    .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
                     .antMatchers("/signup","/").permitAll()
                     .anyRequest().authenticated()
-//                    .antMatchers("/admin/**").hasRole("admin")
                 .and().formLogin()
                     .loginPage("/login").failureUrl("/login?error")
                     .defaultSuccessUrl("/dashboard")

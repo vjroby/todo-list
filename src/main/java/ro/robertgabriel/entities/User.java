@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "users")
 public class User {
@@ -37,7 +38,7 @@ public class User {
     @DateTimeFormat
     private Date created;
 
-    private String role = "USER";
+    private List<String> roles;
 
     public User() {
         super();
@@ -101,15 +102,12 @@ public class User {
         this.tokenExpired = tokenExpired;
     }
 
-    public String getRole() {
-        return role;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-    public boolean isAdmin(){
-        return role.equals("ADMIN");
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -137,7 +135,7 @@ public class User {
                 .append(firstName).append("]")
                 .append("[lastName=").append(lastName).append("]")
                 .append("[username").append(email)
-                .append("role").append(role)
+                .append("roles").append(roles.toString())
                 .append("]");
         return builder.toString();
     }

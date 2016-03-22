@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
@@ -28,11 +29,11 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <c:if test="${user.isAdmin()}">
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <li>
                     <a href="<c:url value="/admin/access_logs" />"><i class="fa fa-bolt fa-fw"></i>Access Logs</a>
                 </li>
-            </c:if>
+            </sec:authorize>
 
             <%--<li>--%>
                 <%--<a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>--%>
