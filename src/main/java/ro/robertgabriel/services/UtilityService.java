@@ -33,7 +33,7 @@ public class UtilityService {
     private String userId = null;
 
 
-    @Scheduled(cron = "* * 1 * * *")
+    @Scheduled(cron = "0 0 1 * * *")
     public void deleteTestUserData(){
         Iterable<TodoList> todoListLists = todoListRepository.findByUserId(getTestUserId());
 
@@ -49,7 +49,7 @@ public class UtilityService {
         log.info("Method ran!"+ System.currentTimeMillis());
     }
 
-    public String getTestUserId(){
+    private String getTestUserId(){
         if(null == userId){
             Config config = configRepository.findOneByKey(testUserKey);
             if(null == config){

@@ -9,21 +9,21 @@ import org.springframework.web.servlet.ModelAndView;
 import ro.robertgabriel.security.AuthenticatedUser;
 import ro.robertgabriel.security.SecurityUtils;
 
-public class BaseController {
+class BaseController {
 
     protected static final Logger log = LogManager.getLogger();
-    protected final int itemsPerPage = 20;
+    final int itemsPerPage = 20;
 
     @InitBinder     /* Converts empty strings into null when a form is submitted */
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
-    protected AuthenticatedUser getAuthenticatedUser() {
+    AuthenticatedUser getAuthenticatedUser() {
         return  (AuthenticatedUser) SecurityUtils.getActiveAuthenticatedUser();
     }
 
-    protected ModelAndView getModelAndViewNotFound(AuthenticatedUser user, String notFoundPage) {
+    ModelAndView getModelAndViewNotFound(AuthenticatedUser user, String notFoundPage) {
         ModelAndView modelAndView = new ModelAndView(notFoundPage);
         modelAndView.addObject("user", user);
         return modelAndView;

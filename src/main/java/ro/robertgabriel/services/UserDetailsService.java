@@ -1,9 +1,7 @@
 package ro.robertgabriel.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,10 +17,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Service("userDetailsService")
+@Service
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService{
 
-    @Qualifier("userRepository")
     @Autowired
     private UserRepository userRepository;
 
@@ -39,22 +36,20 @@ public class UserDetailsService implements org.springframework.security.core.use
         System.out.println("Getting access details from employee dao !!");
         List<User> userList = userRepository.findByEmail(email);
         if (userList.size() != 0){
-            List<GrantedAuthority> auth = AuthorityUtils
-                    .commaSeparatedStringToAuthorityList("ROLE_USER");
             User user = userList.get(0);
+            List<GrantedAuthority> auth = getGrantedAuthorities(user.getRoles());
             AuthenticatedUser authenticatedUser = new AuthenticatedUser(user.getEmail(), user.getPassword(),
                     true, true, true, true, auth);
             authenticatedUser.setFirstName(user.getFirstName());
             authenticatedUser.setLastName(user.getLastName());
             authenticatedUser.setId(user.getId());
-            authenticatedUser.setRole(user.getRole());
             return  authenticatedUser;
         }else{
             throw  new UsernameNotFoundException("User not found");
         }
     }
 
-    public static List<GrantedAuthority> getGrantedAuthorities(
+    private static List<GrantedAuthority> getGrantedAuthorities(
             List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 

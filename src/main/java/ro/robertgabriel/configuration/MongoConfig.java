@@ -13,11 +13,11 @@ import java.util.List;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    public static final String OPENSHIFT_MONGODB_DB_HOST = "OPENSHIFT_MONGODB_DB_HOST";
-    public static final String OPENSHIFT_MONGODB_DB_PORT = "OPENSHIFT_MONGODB_DB_PORT";
-    public static final String OPENSHIFT_APP_NAME = "OPENSHIFT_APP_NAME";
-    public static final String OPENSHIFT_MONGODB_DB_USERNAME = "OPENSHIFT_MONGODB_DB_USERNAME";
-    public static final String OPENSHIFT_MONGODB_DB_PASSWORD = "OPENSHIFT_MONGODB_DB_PASSWORD";
+    private static final String OPENSHIFT_MONGODB_DB_HOST = "OPENSHIFT_MONGODB_DB_HOST";
+    private static final String OPENSHIFT_MONGODB_DB_PORT = "OPENSHIFT_MONGODB_DB_PORT";
+    private static final String OPENSHIFT_APP_NAME = "OPENSHIFT_APP_NAME";
+    private static final String OPENSHIFT_MONGODB_DB_USERNAME = "OPENSHIFT_MONGODB_DB_USERNAME";
+    private static final String OPENSHIFT_MONGODB_DB_PASSWORD = "OPENSHIFT_MONGODB_DB_PASSWORD";
 
     @Override
     protected String getDatabaseName() {

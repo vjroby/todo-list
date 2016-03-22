@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ public class AdminController extends BaseController {
     @Autowired
     public DefaultAccessLogService defaultAccessLogService;
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = {"/admin/access_logs", "/admin/access_log/{page}"}, method = RequestMethod.GET)
     public ModelAndView getAccessLogs(@RequestParam(defaultValue = "0") Integer page) {
         ModelAndView modelAndView = new ModelAndView("accessLogsPage");

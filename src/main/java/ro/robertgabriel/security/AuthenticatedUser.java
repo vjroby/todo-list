@@ -8,10 +8,9 @@ import java.util.Collection;
 public class AuthenticatedUser extends User {
 
 
-    protected String firstName;
-    protected String lastName;
+    private String firstName;
+    private String lastName;
     protected String id;
-    protected String role;
 
     public String getId() {
         return id;
@@ -45,10 +44,4 @@ public class AuthenticatedUser extends User {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-    public boolean isAdmin(){
-        return role.equals("admin");
-    }
 }
