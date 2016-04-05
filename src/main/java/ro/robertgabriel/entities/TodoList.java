@@ -3,9 +3,7 @@ package ro.robertgabriel.entities;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Basic;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +13,8 @@ import java.util.List;
 @Table(name = "todolists")
 public class TodoList implements Serializable{
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private String id;
 
     @NotNull
