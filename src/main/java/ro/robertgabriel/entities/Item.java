@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Basic;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Document(collection = "items")
 public class Item implements Serializable{
 
+    @GeneratedValue
     @Id
     private String id;
 
@@ -39,6 +41,11 @@ public class Item implements Serializable{
     }
 
     public void setId(String id) {
+
+        if(id.length() == 0){
+            this.id = null;
+            return;
+        }
         this.id = id;
     }
 

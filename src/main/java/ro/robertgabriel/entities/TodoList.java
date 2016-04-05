@@ -4,19 +4,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Basic;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "todoList")
+@Document
 public class TodoList implements Serializable{
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private String id;
+    private String id = null;
 
     @NotNull
     private String title;
@@ -44,11 +41,16 @@ public class TodoList implements Serializable{
         return user;
     }
 
+    @Id
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
+        if(id.length() == 0){
+            this.id = null;
+            return;
+        }
         this.id = id;
     }
 
