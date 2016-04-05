@@ -12,7 +12,6 @@ import java.util.List;
 @Document(collection = "todoList")
 public class TodoList implements Serializable{
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private String id;
 
