@@ -3,7 +3,8 @@ package ro.robertgabriel.entities;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -40,7 +41,7 @@ public class TodoList implements Serializable{
     public User getUser() {
         return user;
     }
-
+    @Id
     public String getId() {
         return id;
     }
