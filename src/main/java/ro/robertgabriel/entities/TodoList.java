@@ -9,8 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Document
-@Table(name = "todolists")
+@Document(collection = "todoList")
 public class TodoList implements Serializable{
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +42,6 @@ public class TodoList implements Serializable{
         return user;
     }
 
-    @Id
     public String getId() {
         return id;
     }
